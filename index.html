@@ -41,6 +41,134 @@
             opacity: 0.95;
         }
 
+        .filter-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin: 0 auto 30px;
+            max-width: 900px;
+        }
+
+        .filter-btn {
+            padding: 12px 24px;
+            background: white;
+            border: 2px solid transparent;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            color: #667eea;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .filter-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .filter-btn.active {
+            background: #667eea;
+            color: white;
+            border-color: white;
+        }
+
+        .feedback-section {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            margin: 40px auto;
+            max-width: 700px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        .feedback-section h2 {
+            color: #667eea;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .feedback-section p {
+            text-align: center;
+            color: #666;
+            margin-bottom: 25px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            color: #333;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 16px;
+            font-family: inherit;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .success-message {
+            display: none;
+            background: #4caf50;
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        .scholar-card .category-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #667eea;
+            color: white;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
         .search-box {
             max-width: 600px;
             margin: 0 auto 40px;
@@ -202,14 +330,69 @@
     <div class="container">
         <header>
             <h1>🎓 Tajik Scholars</h1>
-            <p>Celebrating the intellectual heritage of Tajiks</p>
+            <p>Celebrating the intellectual heritage of Tajikistan</p>
         </header>
 
         <div class="search-box">
             <input type="text" id="searchInput" placeholder="Search scholars by name...">
         </div>
 
+        <div class="filter-buttons">
+            <button class="filter-btn active" data-category="all">All Scholars</button>
+            <button class="filter-btn" data-category="scholar">Islamic Scholars</button>
+            <button class="filter-btn" data-category="scientist">Scientists & Mathematicians</button>
+            <button class="filter-btn" data-category="poet">Poets & Writers</button>
+            <button class="filter-btn" data-category="leader">Leaders & Warriors</button>
+        </div>
+
         <div class="scholars-grid" id="scholarsGrid"></div>
+
+        <div class="feedback-section">
+            <h2>📝 Suggest a Scholar or Give Feedback</h2>
+            <p>Know a Tajik scholar we should add? Have feedback? Let us know!</p>
+            <form id="feedbackForm">
+                <div class="form-group">
+                    <label for="submissionType">What would you like to do?</label>
+                    <select id="submissionType" name="submissionType" required>
+                        <option value="">Select an option...</option>
+                        <option value="suggest">Suggest a new scholar</option>
+                        <option value="feedback">Give feedback on the website</option>
+                        <option value="correction">Report an error or correction</option>
+                    </select>
+                </div>
+
+                <div class="form-group" id="scholarNameGroup" style="display:none;">
+                    <label for="scholarName">Scholar's Name</label>
+                    <input type="text" id="scholarName" name="scholarName" placeholder="e.g., Abu Rayhan Biruni">
+                </div>
+
+                <div class="form-group" id="scholarCategoryGroup" style="display:none;">
+                    <label for="scholarCategory">Category</label>
+                    <select id="scholarCategory" name="scholarCategory">
+                        <option value="">Select category...</option>
+                        <option value="scholar">Islamic Scholar</option>
+                        <option value="scientist">Scientist/Mathematician</option>
+                        <option value="poet">Poet/Writer</option>
+                        <option value="leader">Leader/Warrior</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Details / Message</label>
+                    <textarea id="message" name="message" placeholder="Provide details about the scholar (birthplace, achievements, sources) or your feedback..." required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="contactEmail">Your Email (optional)</label>
+                    <input type="email" id="contactEmail" name="contactEmail" placeholder="your.email@example.com">
+                </div>
+
+                <button type="submit" class="submit-btn">Submit</button>
+                <div class="success-message" id="successMessage">
+                    ✓ Thank you! Your submission has been received.
+                </div>
+            </form>
+        </div>
     </div>
 
     <div class="modal" id="modal">
@@ -224,6 +407,7 @@
             {
                 name: "Imam Abu Hanifa",
                 years: "699-767 CE",
+                category: "scholar",
                 birthplace: "Kufa, Iraq (family from Kabul, Khorasan)",
                 achievements: "Founder of the Hanafi school of Islamic jurisprudence, one of the four major Sunni schools of law. His legal methodology emphasized reason and analogy alongside Quranic and Hadith sources.",
                 famous: "His school of thought is followed by the majority of Muslims worldwide. His family originated from Kabul with Persian/Eastern Iranian (Tajik) ancestry. His great-grandfather Marzban held a Persian title in the Sasanian Empire. Recognized by Tajikistan as a Tajik scholar with ancestry from Parwan Province, Afghanistan.",
@@ -233,6 +417,7 @@
             {
                 name: "Imam Bukhari",
                 years: "810-870 CE",
+                category: "scholar",
                 birthplace: "Bukhara (present-day Uzbekistan)",
                 achievements: "Compiled Sahih al-Bukhari, one of the most authentic collections of Hadith (sayings of Prophet Muhammad). Traveled extensively to collect and verify over 600,000 hadith traditions.",
                 famous: "His collection is considered the most authentic book after the Quran in Sunni Islam. Born to a Persian-speaking family in Bukhara during the Samanid era, he was of Persian/Tajik descent. His great-grandfather Bardizbah was a Zoroastrian Magi, confirming Persian heritage.",
@@ -242,6 +427,7 @@
             {
                 name: "Jalal al-Din Rumi",
                 years: "1207-1273 CE",
+                category: "poet",
                 birthplace: "Balkh (Afghanistan) or Wakhsh (Tajikistan)",
                 achievements: "Mystical poet and Sufi master whose poetry transcended cultural boundaries. Founded the Mevlevi Order of whirling dervishes. Wrote the Masnavi, a six-volume spiritual epic.",
                 famous: "His Persian poetry is among the most read in the world. Born to Persian-speaking Tajik parents from Balkh/Wakhsh region. His works explore divine love, spiritual enlightenment, and the nature of existence. Known as 'Mawlana' (our master) and Balkhi (from Balkh).",
@@ -251,6 +437,7 @@
             {
                 name: "Abu Abdullah Rudaki",
                 years: "858-941 CE",
+                category: "poet",
                 birthplace: "Rudak, Samanid Empire (present-day Tajikistan)",
                 achievements: "Known as the 'Father of Persian Poetry', Rudaki was a pioneer of classical Persian literature. He served as the court poet of the Samanid dynasty and composed over 100,000 verses, though only fragments survive today.",
                 famous: "He revolutionized Persian poetry by establishing new poetic forms and standards. His eloquent style and mastery of language laid the foundation for all subsequent Persian literature. He was also known for his musical talents and sang his own compositions.",
@@ -260,6 +447,7 @@
             {
                 name: "Abu Ali ibn Sina (Avicenna)",
                 years: "980-1037 CE",
+                category: "scientist",
                 birthplace: "Afshana, near Bukhara (present-day Uzbekistan)",
                 achievements: "One of history's most significant physicians and philosophers. Wrote 'The Canon of Medicine' which remained a medical authority for centuries, and 'The Book of Healing', a comprehensive philosophical and scientific encyclopedia.",
                 famous: "His medical encyclopedia was used as a standard medical text in European universities until the 18th century. He made groundbreaking contributions to philosophy, astronomy, mathematics, and medicine. Born to a Persian-speaking family in the heart of the Persian cultural sphere.",
@@ -269,6 +457,7 @@
             {
                 name: "Al-Farabi",
                 years: "872-950 CE",
+                category: "scientist",
                 birthplace: "Farab, Transoxiana (present-day Kazakhstan/Uzbekistan region)",
                 achievements: "Persian philosopher known as the 'Second Teacher' (after Aristotle). Made significant contributions to political philosophy, metaphysics, ethics, and logic. Wrote commentaries on Aristotle and Plato.",
                 famous: "He attempted to synthesize Greek philosophy with Islamic thought. His works on the ideal state influenced later political philosophers. He was also accomplished in music theory and mathematics.",
@@ -278,6 +467,7 @@
             {
                 name: "Al-Khwarizmi",
                 years: "780-850 CE",
+                category: "scientist",
                 birthplace: "Khwarezm (present-day Uzbekistan/Turkmenistan)",
                 achievements: "Persian mathematician and astronomer whose works introduced Arabic numerals and algebra to Europe. His name gave us the word 'algorithm' and his book title gave us 'algebra'.",
                 famous: "He revolutionized mathematics by systematizing algebraic methods. His treatise on Hindu-Arabic numerals was crucial in spreading this numeral system to the West. He also made important contributions to geography and astronomy.",
@@ -287,6 +477,7 @@
             {
                 name: "Al-Biruni",
                 years: "973-1048 CE",
+                category: "scientist",
                 birthplace: "Kath, Khwarezm (present-day Uzbekistan)",
                 achievements: "Persian polymath who made groundbreaking contributions to astronomy, mathematics, physics, medicine, and history. Wrote over 146 works on diverse scientific subjects.",
                 famous: "He accurately calculated the Earth's radius and studied Indian culture extensively. He mastered multiple languages and conducted empirical research centuries before it became standard practice. His works on astronomy and trigonometry were revolutionary.",
@@ -296,6 +487,7 @@
             {
                 name: "Ferdowsi",
                 years: "940-1020 CE",
+                category: "poet",
                 birthplace: "Tus, Khorasan (present-day Iran)",
                 achievements: "Author of the Shahnameh (Book of Kings), the longest epic poem ever written by a single poet, containing 60,000 verses. Took 30 years to complete.",
                 famous: "His epic preserved Persian language, mythology, and cultural identity during a period of Arab influence. The Shahnameh chronicles Persian history from mythical times to the Islamic conquest and remains central to Persian cultural identity.",
@@ -305,6 +497,7 @@
             {
                 name: "Jami",
                 years: "1414-1492 CE",
+                category: "poet",
                 birthplace: "Jam, Khorasan (near Herat, present-day Afghanistan)",
                 achievements: "Last great classical Persian poet of the medieval period. Master of various poetic forms including ghazal, masnavi, and rubai. Scholar of Sufism and Islamic theology.",
                 famous: "His poetry synthesized earlier Persian mystical traditions. He wrote influential works on Sufi philosophy and his poetry influenced Ottoman and Mughal literature. His seven masnavi poems (Haft Awrang) are masterpieces of Persian literature.",
@@ -314,6 +507,7 @@
             {
                 name: "Khwaja Abdullah Ansari",
                 years: "1006-1088 CE",
+                category: "scholar",
                 birthplace: "Herat, Khorasan (present-day Afghanistan)",
                 achievements: "Persian Sufi saint, poet, and commentator on the Quran. Known for his spiritual writings in both Arabic and Persian. His 'Munajat' (Intimate Conversations with God) is a classic of Persian prose.",
                 famous: "He is considered the patron saint of Herat. His works on Sufism combined poetry with spiritual guidance. He defended Hanbali orthodoxy while embracing mystical experience. His shrine in Herat remains an important pilgrimage site.",
@@ -323,6 +517,7 @@
             {
                 name: "Ismail Samani",
                 years: "849-907 CE",
+                category: "leader",
                 birthplace: "Fergana Valley",
                 achievements: "Founder and ruler of the Samanid dynasty, which established the first independent Persian state after the Arab conquest. Made Bukhara a center of Persian culture and Islamic learning.",
                 famous: "He promoted Persian language, culture, and scholarship during his reign. Under his patronage, the Persian Renaissance flourished. He supported poets like Rudaki and created an environment where Persian arts and sciences thrived. The Tajik currency is named after him.",
@@ -332,6 +527,7 @@
             {
                 name: "Omar Khayyam",
                 years: "1048-1131 CE",
+                category: "scientist",
                 birthplace: "Nishapur, Khorasan (present-day Iran)",
                 achievements: "Renowned mathematician, astronomer, and poet. Developed geometric solutions to cubic equations, contributed to calendar reform, and wrote the famous 'Rubaiyat' poetry collection.",
                 famous: "His work on algebra was revolutionary, and his poetry explored themes of mortality, love, and the cosmos with unprecedented depth. His astronomical calculations were incredibly precise, and he helped create one of the most accurate calendars in history.",
@@ -341,6 +537,7 @@
             {
                 name: "Ahmad Shah Massoud",
                 years: "1953-2001",
+                category: "leader",
                 birthplace: "Bazarak, Panjshir Valley, Afghanistan",
                 achievements: "Tajik military leader who fought against the Soviet invasion and later the Taliban. Known as the 'Lion of Panjshir' for his brilliant guerrilla warfare tactics. Served as Minister of Defense of Afghanistan.",
                 famous: "He successfully defended the Panjshir Valley against repeated Soviet and Taliban offensives. A moderate Muslim who advocated for democracy and women's rights. Assassinated two days before 9/11. Declared National Hero of Afghanistan and honored internationally for his resistance.",
@@ -350,6 +547,7 @@
             {
                 name: "Sadriddin Ayni",
                 years: "1878-1954",
+                category: "poet",
                 birthplace: "Soktare, Bukhara Emirate (present-day Tajikistan)",
                 achievements: "The founder of modern Tajik literature, Ayni wrote novels, poetry, and historical works. His novel 'Dokhunda' is considered a masterpiece of Central Asian literature. He also compiled important historical chronicles.",
                 famous: "He is regarded as the father of Tajik Soviet literature and played a crucial role in preserving and modernizing Tajik cultural identity. His works documented the social transformations of his era and promoted literacy and education among Tajiks.",
@@ -359,6 +557,7 @@
             {
                 name: "Bobojon Ghafurov",
                 years: "1908-1977",
+                category: "scholar",
                 birthplace: "Isfara, Russian Turkestan (present-day Tajikistan)",
                 achievements: "Prominent historian and academician who authored 'The Tajiks: Ancient, Medieval, and Modern History', a comprehensive study of Tajik civilization. He served as President of the Academy of Sciences of Tajikistan.",
                 famous: "His historical research established Tajik national identity in the Soviet era and preserved knowledge of pre-Islamic and Islamic Persian civilization. He was instrumental in developing Tajik academic institutions and training generations of scholars.",
@@ -368,6 +567,7 @@
             {
                 name: "Mirzo Tursunzoda",
                 years: "1911-1977",
+                category: "poet",
                 birthplace: "Karatog, Russian Turkestan (present-day Tajikistan)",
                 achievements: "One of Tajikistan's greatest poets, Tursunzoda wrote powerful verse celebrating Persian culture, human dignity, and social justice. His epic poem 'The Voice of Asia' gained international recognition.",
                 famous: "He served as chairman of the Writers' Union and helped shape modern Tajik poetry. His works were translated into many languages, and he received the Lenin Prize for literature. He was a voice for peace and cultural dialogue during the Cold War.",
@@ -376,10 +576,20 @@
             }
         ];
 
+        const categoryNames = {
+            'scholar': 'Islamic Scholar',
+            'scientist': 'Scientist',
+            'poet': 'Poet/Writer',
+            'leader': 'Leader/Warrior'
+        };
+
+        let currentFilter = 'all';
+
         function renderScholars(scholarsToRender = scholars) {
             const grid = document.getElementById('scholarsGrid');
             grid.innerHTML = scholarsToRender.map((scholar, index) => `
-                <div class="scholar-card" onclick="openModal(${index})">
+                <div class="scholar-card" onclick="openModal(${scholars.indexOf(scholar)})">
+                    <div class="category-badge">${categoryNames[scholar.category]}</div>
                     <h3>${scholar.name}</h3>
                     <div class="years">${scholar.years}</div>
                     <div class="preview">${scholar.preview}</div>
@@ -437,10 +647,98 @@
         // Search functionality
         document.getElementById('searchInput').addEventListener('input', function(e) {
             const searchTerm = e.target.value.toLowerCase();
-            const filtered = scholars.filter(scholar => 
+            let filtered = scholars;
+            
+            // Apply category filter
+            if (currentFilter !== 'all') {
+                filtered = filtered.filter(s => s.category === currentFilter);
+            }
+            
+            // Apply search filter
+            filtered = filtered.filter(scholar => 
                 scholar.name.toLowerCase().includes(searchTerm)
             );
+            
             renderScholars(filtered);
+        });
+
+        // Filter button functionality
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                // Update active button
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                
+                // Get category
+                currentFilter = this.getAttribute('data-category');
+                
+                // Filter scholars
+                let filtered = scholars;
+                if (currentFilter !== 'all') {
+                    filtered = scholars.filter(s => s.category === currentFilter);
+                }
+                
+                // Apply search if exists
+                const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+                if (searchTerm) {
+                    filtered = filtered.filter(scholar => 
+                        scholar.name.toLowerCase().includes(searchTerm)
+                    );
+                }
+                
+                renderScholars(filtered);
+            });
+        });
+
+        // Form submission type change
+        document.getElementById('submissionType').addEventListener('change', function() {
+            const scholarFields = document.getElementById('scholarNameGroup');
+            const categoryField = document.getElementById('scholarCategoryGroup');
+            
+            if (this.value === 'suggest') {
+                scholarFields.style.display = 'block';
+                categoryField.style.display = 'block';
+                document.getElementById('scholarName').required = true;
+                document.getElementById('scholarCategory').required = true;
+            } else {
+                scholarFields.style.display = 'none';
+                categoryField.style.display = 'none';
+                document.getElementById('scholarName').required = false;
+                document.getElementById('scholarCategory').required = false;
+            }
+        });
+
+        // Form submission
+        document.getElementById('feedbackForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = {
+                type: document.getElementById('submissionType').value,
+                scholarName: document.getElementById('scholarName').value,
+                category: document.getElementById('scholarCategory').value,
+                message: document.getElementById('message').value,
+                email: document.getElementById('contactEmail').value,
+                timestamp: new Date().toISOString()
+            };
+            
+            // Store in localStorage (you can later connect this to a backend)
+            const submissions = JSON.parse(localStorage.getItem('scholarSubmissions') || '[]');
+            submissions.push(formData);
+            localStorage.setItem('scholarSubmissions', JSON.stringify(submissions));
+            
+            // Show success message
+            document.getElementById('successMessage').style.display = 'block';
+            
+            // Reset form
+            this.reset();
+            document.getElementById('scholarNameGroup').style.display = 'none';
+            document.getElementById('scholarCategoryGroup').style.display = 'none';
+            
+            // Hide success message after 5 seconds
+            setTimeout(() => {
+                document.getElementById('successMessage').style.display = 'none';
+            }, 5000);
         });
 
         // Initial render
