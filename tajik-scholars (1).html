@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tajik Scholars - A Digital Archive</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+            padding: 20px;
+        }
+
+        header h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        header p {
+            font-size: clamp(1rem, 3vw, 1.3rem);
+            opacity: 0.95;
+        }
+
+        .search-box {
+            max-width: 600px;
+            margin: 0 auto 40px;
+            position: relative;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 15px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 50px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            outline: none;
+        }
+
+        .scholars-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .scholar-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .scholar-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+        }
+
+        .scholar-card h3 {
+            color: #667eea;
+            margin-bottom: 8px;
+            font-size: 1.4rem;
+        }
+
+        .scholar-card .years {
+            color: #666;
+            font-size: 0.95rem;
+            margin-bottom: 12px;
+        }
+
+        .scholar-card .preview {
+            color: #333;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 1000;
+            overflow-y: auto;
+            padding: 20px;
+        }
+
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 20px;
+            max-width: 800px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 40px;
+            position: relative;
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 30px;
+            cursor: pointer;
+            color: #666;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .close-btn:hover {
+            background: #f0f0f0;
+            color: #333;
+        }
+
+        .modal-content h2 {
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 2rem;
+        }
+
+        .modal-content .years {
+            color: #666;
+            font-size: 1.1rem;
+            margin-bottom: 25px;
+        }
+
+        .info-section {
+            margin-bottom: 25px;
+        }
+
+        .info-section h3 {
+            color: #764ba2;
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+        }
+
+        .info-section p {
+            line-height: 1.8;
+            color: #333;
+            font-size: 1.05rem;
+        }
+
+        @media (max-width: 768px) {
+            .modal-content {
+                padding: 30px 20px;
+            }
+
+            .scholars-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎓 Tajik Scholars</h1>
+            <p>Celebrating the intellectual heritage of Tajiks</p>
+        </header>
+
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="Search scholars by name...">
+        </div>
+
+        <div class="scholars-grid" id="scholarsGrid"></div>
+    </div>
+
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <div id="modalBody"></div>
+        </div>
+    </div>
+
+    <script>
+        const scholars = [
+            {
+                name: "Imam Abu Hanifa",
+                years: "699-767 CE",
+                birthplace: "Kufa, Iraq (family from Kabul, Khorasan)",
+                achievements: "Founder of the Hanafi school of Islamic jurisprudence, one of the four major Sunni schools of law. His legal methodology emphasized reason and analogy alongside Quranic and Hadith sources.",
+                famous: "His school of thought is followed by the majority of Muslims worldwide. His family originated from Kabul with Persian/Eastern Iranian (Tajik) ancestry. His great-grandfather Marzban held a Persian title in the Sasanian Empire. Recognized by Tajikistan as a Tajik scholar with ancestry from Parwan Province, Afghanistan.",
+                preview: "Founder of Hanafi jurisprudence with Tajik ancestry from Kabul"
+            },
+            {
+                name: "Imam Bukhari",
+                years: "810-870 CE",
+                birthplace: "Bukhara (present-day Uzbekistan)",
+                achievements: "Compiled Sahih al-Bukhari, one of the most authentic collections of Hadith (sayings of Prophet Muhammad). Traveled extensively to collect and verify over 600,000 hadith traditions.",
+                famous: "His collection is considered the most authentic book after the Quran in Sunni Islam. Born to a Persian-speaking family in Bukhara during the Samanid era, he was of Persian/Tajik descent. His great-grandfather Bardizbah was a Zoroastrian Magi, confirming Persian heritage.",
+                preview: "Compiler of Sahih al-Bukhari, Persian scholar from Bukhara"
+            },
+            {
+                name: "Jalal al-Din Rumi",
+                years: "1207-1273 CE",
+                birthplace: "Balkh (Khorasan)",
+                achievements: "Mystical poet and Sufi master whose poetry transcended cultural boundaries. Founded the Mevlevi Order of whirling dervishes. Wrote the Masnavi, a six-volume spiritual epic.",
+                famous: "His Persian poetry is among the most read in the world. Born to Persian-speaking Tajik parents from Balkh/Wakhsh region. His works explore divine love, spiritual enlightenment, and the nature of existence. Known as 'Mawlana' (our master) and Balkhi (from Balkh).",
+                preview: "Sufi mystic poet from Balkh/Wakhsh, master of Persian spiritual poetry"
+            },
+            {
+                name: "Abu Abdullah Rudaki",
+                years: "858-941 CE",
+                birthplace: "Rudak, Samanid Empire (present-day Tajikistan)",
+                achievements: "Known as the 'Father of Persian Poetry', Rudaki was a pioneer of classical Persian literature. He served as the court poet of the Samanid dynasty and composed over 100,000 verses, though only fragments survive today.",
+                famous: "He revolutionized Persian poetry by establishing new poetic forms and standards. His eloquent style and mastery of language laid the foundation for all subsequent Persian literature. He was also known for his musical talents and sang his own compositions.",
+                preview: "Father of Persian Poetry and pioneer of classical Persian literature"
+            },
+            {
+                name: "Abu Ali ibn Sina (Avicenna)",
+                years: "980-1037 CE",
+                birthplace: "Afshana, near Bukhara (present-day Uzbekistan)",
+                achievements: "One of history's most significant physicians and philosophers. Wrote 'The Canon of Medicine' which remained a medical authority for centuries, and 'The Book of Healing', a comprehensive philosophical and scientific encyclopedia.",
+                famous: "His medical encyclopedia was used as a standard medical text in European universities until the 18th century. He made groundbreaking contributions to philosophy, astronomy, mathematics, and medicine. Born to a Persian-speaking family in the heart of the Persian cultural sphere.",
+                preview: "Legendary Persian physician and philosopher whose medical texts shaped medicine for 600 years"
+            },
+            {
+                name: "Al-Farabi",
+                years: "872-950 CE",
+                birthplace: "Farab, Transoxiana (present-day Kazakhstan/Uzbekistan region)",
+                achievements: "Persian philosopher known as the 'Second Teacher' (after Aristotle). Made significant contributions to political philosophy, metaphysics, ethics, and logic. Wrote commentaries on Aristotle and Plato.",
+                famous: "He attempted to synthesize Greek philosophy with Islamic thought. His works on the ideal state influenced later political philosophers. He was also accomplished in music theory and mathematics.",
+                preview: "Second Teacher of philosophy, synthesized Greek and Islamic thought"
+            },
+            {
+                name: "Al-Khwarizmi",
+                years: "780-850 CE",
+                birthplace: "Khwarezm (present-day Uzbekistan/Turkmenistan)",
+                achievements: "Persian mathematician and astronomer whose works introduced Arabic numerals and algebra to Europe. His name gave us the word 'algorithm' and his book title gave us 'algebra'.",
+                famous: "He revolutionized mathematics by systematizing algebraic methods. His treatise on Hindu-Arabic numerals was crucial in spreading this numeral system to the West. He also made important contributions to geography and astronomy.",
+                preview: "Father of Algebra, introduced algorithms and Arabic numerals to Europe"
+            },
+            {
+                name: "Al-Biruni",
+                years: "973-1048 CE",
+                birthplace: "Kath, Khwarezm (present-day Uzbekistan)",
+                achievements: "Persian polymath who made groundbreaking contributions to astronomy, mathematics, physics, medicine, and history. Wrote over 146 works on diverse scientific subjects.",
+                famous: "He accurately calculated the Earth's radius and studied Indian culture extensively. He mastered multiple languages and conducted empirical research centuries before it became standard practice. His works on astronomy and trigonometry were revolutionary.",
+                preview: "Persian polymath who calculated Earth's radius and mastered multiple sciences"
+            },
+            {
+                name: "Ferdowsi",
+                years: "940-1020 CE",
+                birthplace: "Tus, Khorasan (present-day Iran)",
+                achievements: "Author of the Shahnameh (Book of Kings), the longest epic poem ever written by a single poet, containing 60,000 verses. Took 30 years to complete.",
+                famous: "His epic preserved Persian language, mythology, and cultural identity during a period of Arab influence. The Shahnameh chronicles Persian history from mythical times to the Islamic conquest and remains central to Persian cultural identity.",
+                preview: "Epic poet who preserved Persian language and mythology in the Shahnameh"
+            },
+            {
+                name: "Jami",
+                years: "1414-1492 CE",
+                birthplace: "Jam, Khorasan (near Herat, present-day Khorasan)",
+                achievements: "Last great classical Persian poet of the medieval period. Master of various poetic forms including ghazal, masnavi, and rubai. Scholar of Sufism and Islamic theology.",
+                famous: "His poetry synthesized earlier Persian mystical traditions. He wrote influential works on Sufi philosophy and his poetry influenced Ottoman and Mughal literature. His seven masnavi poems (Haft Awrang) are masterpieces of Persian literature.",
+                preview: "Last great classical Persian poet and Sufi master from Herat"
+            },
+            {
+                name: "Khwaja Abdullah Ansari",
+                years: "1006-1088 CE",
+                birthplace: "Herat, Khorasan (present-day Khorasan)",
+                achievements: "Persian Sufi saint, poet, and commentator on the Quran. Known for his spiritual writings in both Arabic and Persian. His 'Munajat' (Intimate Conversations with God) is a classic of Persian prose.",
+                famous: "He is considered the patron saint of Herat. His works on Sufism combined poetry with spiritual guidance. He defended Hanbali orthodoxy while embracing mystical experience. His shrine in Herat remains an important pilgrimage site.",
+                preview: "Sufi saint and poet from Herat, author of mystical Persian prose"
+            },
+            {
+                name: "Ismail Samani",
+                years: "849-907 CE",
+                birthplace: "Fergana Valley",
+                achievements: "Founder and ruler of the Samanid dynasty, which established the first independent Persian state after the Arab conquest. Made Bukhara a center of Persian culture and Islamic learning.",
+                famous: "He promoted Persian language, culture, and scholarship during his reign. Under his patronage, the Persian Renaissance flourished. He supported poets like Rudaki and created an environment where Persian arts and sciences thrived. The Tajik currency is named after him.",
+                preview: "Founder of the Samanid Empire, patron of Persian cultural renaissance"
+            },
+            {
+                name: "Ahmad Shah Massoud",
+                years: "1953-2001",
+                birthplace: "Bazarak, Panjshir Valley, Afghanistan",
+                achievements: "Tajik military leader who fought against the Soviet invasion and later the Taliban. Known as the 'Lion of Panjshir' for his brilliant guerrilla warfare tactics. Served as Minister of Defense of Afghanistan.",
+                famous: "He successfully defended the Panjshir Valley against repeated Soviet and Taliban offensives. A moderate Muslim who advocated for democracy and women's rights. Assassinated two days before 9/11. Declared National Hero of Afghanistan and honored internationally for his resistance.",
+                preview: "Lion of Panjshir, military leader who defended Afghanistan against Soviet and Taliban forces"
+            },
+            {
+                name: "Sadriddin Ayni",
+                years: "1878-1954",
+                birthplace: "Soktare, Bukhara Emirate (present-day Tajikistan)",
+                achievements: "The founder of modern Tajik literature, Ayni wrote novels, poetry, and historical works. His novel 'Dokhunda' is considered a masterpiece of Central Asian literature. He also compiled important historical chronicles.",
+                famous: "He is regarded as the father of Tajik Soviet literature and played a crucial role in preserving and modernizing Tajik cultural identity. His works documented the social transformations of his era and promoted literacy and education among Tajiks.",
+                preview: "Founder of modern Tajik literature and cultural renaissance leader"
+            },
+            {
+                name: "Bobojon Ghafurov",
+                years: "1908-1977",
+                birthplace: "Isfara, Russian Turkestan (present-day Tajikistan)",
+                achievements: "Prominent historian and academician who authored 'The Tajiks: Ancient, Medieval, and Modern History', a comprehensive study of Tajik civilization. He served as President of the Academy of Sciences of Tajikistan.",
+                famous: "His historical research established Tajik national identity in the Soviet era and preserved knowledge of pre-Islamic and Islamic Persian civilization. He was instrumental in developing Tajik academic institutions and training generations of scholars.",
+                preview: "Leading historian who documented the complete history of the Tajik people"
+            },
+            {
+                name: "Mirzo Tursunzoda",
+                years: "1911-1977",
+                birthplace: "Karatog, Russian Turkestan (present-day Tajikistan)",
+                achievements: "One of Tajikistan's greatest poets, Tursunzoda wrote powerful verse celebrating Persian culture, human dignity, and social justice. His epic poem 'The Voice of Asia' gained international recognition.",
+                famous: "He served as chairman of the Writers' Union and helped shape modern Tajik poetry. His works were translated into many languages, and he received the Lenin Prize for literature. He was a voice for peace and cultural dialogue during the Cold War.",
+                preview: "National poet whose verse championed Persian heritage and human dignity"
+            }
+        ];
+
+        function renderScholars(scholarsToRender = scholars) {
+            const grid = document.getElementById('scholarsGrid');
+            grid.innerHTML = scholarsToRender.map((scholar, index) => `
+                <div class="scholar-card" onclick="openModal(${index})">
+                    <h3>${scholar.name}</h3>
+                    <div class="years">${scholar.years}</div>
+                    <div class="preview">${scholar.preview}</div>
+                </div>
+            `).join('');
+        }
+
+        function openModal(index) {
+            const scholar = scholars[index];
+            const modal = document.getElementById('modal');
+            const modalBody = document.getElementById('modalBody');
+            
+            modalBody.innerHTML = `
+                <h2>${scholar.name}</h2>
+                <div class="years">${scholar.years}</div>
+                
+                <div class="info-section">
+                    <h3>📍 Birthplace</h3>
+                    <p>${scholar.birthplace}</p>
+                </div>
+                
+                <div class="info-section">
+                    <h3>🏆 Major Achievements</h3>
+                    <p>${scholar.achievements}</p>
+                </div>
+                
+                <div class="info-section">
+                    <h3>⭐ Why They're Famous</h3>
+                    <p>${scholar.famous}</p>
+                </div>
+            `;
+            
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('modal');
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when clicking outside
+        document.getElementById('modal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+
+        // Search functionality
+        document.getElementById('searchInput').addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            const filtered = scholars.filter(scholar => 
+                scholar.name.toLowerCase().includes(searchTerm)
+            );
+            renderScholars(filtered);
+        });
+
+        // Initial render
+        renderScholars();
+    </script>
+</body>
+</html>
