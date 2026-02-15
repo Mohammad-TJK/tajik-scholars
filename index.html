@@ -3,7 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tajik Scholars - A Digital Archive</title>
+    <title>Tajik Scholars - Complete Database of Historical and Modern Tajik Figures</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Comprehensive database of Tajik scholars, scientists, poets, and leaders throughout history. Documenting Tajik heritage with verified sources - from Imam Abu Hanifa to modern Tajik figures.">
+    <meta name="keywords" content="Tajik scholars, Tajik history, Tajik scientists, Tajik poets, Tajik heritage, Tajik identity, Tajik people, Tajikistan scholars, historical Tajiks, famous Tajiks, Tajik culture, Tajik intellectuals, Imam Bukhari Tajik, Rumi Tajik, Ibn Sina Tajik, Al-Khwarizmi Tajik, Rudaki, Ahmad Shah Massoud">
+    <meta name="author" content="Tajik Heritage Archive">
+    
+    <!-- Open Graph / Social Media -->
+    <meta property="og:title" content="Tajik Scholars - Historical and Modern Tajik Figures">
+    <meta property="og:description" content="Complete database documenting Tajik scholars, scientists, poets and leaders with verified historical sources. Preserving authentic Tajik heritage.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://mohammad-tjk.github.io/tajik-scholars/">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Tajik Scholars Database">
+    <meta name="twitter:description" content="Comprehensive archive of Tajik scholars throughout history with verified sources proving Tajik identity.">
+    
+    <!-- Structured Data for Google -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "EducationalWebsite",
+        "name": "Tajik Scholars Database",
+        "description": "Comprehensive database of Tajik scholars, scientists, poets, and leaders throughout history with verified sources documenting their Tajik identity",
+        "url": "https://mohammad-tjk.github.io/tajik-scholars/",
+        "about": {
+            "@type": "Thing",
+            "name": "Tajik People",
+            "description": "Historical and modern Tajik scholars and their contributions to science, literature, and Islamic scholarship"
+        },
+        "keywords": "Tajik scholars, Tajik history, Tajik scientists, Tajik heritage, Tajik identity, Tajikistan",
+        "inLanguage": "en",
+        "audience": {
+            "@type": "Audience",
+            "audienceType": "Tajik diaspora, historians, researchers, students"
+        }
+    }
+    </script>
+    
     <style>
         * {
             margin: 0;
@@ -329,9 +368,23 @@
 <body>
     <div class="container">
         <header>
-            <h1>🎓 Tajik Scholars</h1>
-            <p>Celebrating the intellectual heritage of Tajiks</p>
+            <h1>🎓 Tajik Scholars & Historical Figures</h1>
+            <p>Documenting authentic Tajik heritage - Past to Present</p>
+            <p style="font-size: 0.95rem; margin-top: 10px; opacity: 0.9;">Preserving the truth about Tajik scholars claimed by other ethnicities</p>
         </header>
+
+        <div style="background: white; border-radius: 15px; padding: 25px; margin: 0 auto 30px; max-width: 900px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+            <h2 style="color: #667eea; margin-bottom: 15px; text-align: center;">🛡️ Why This Website Exists</h2>
+            <p style="line-height: 1.8; color: #333; margin-bottom: 12px;">
+                For too long, <strong>Persians, Pashtuns, Arabs, and Turks</strong> have falsely claimed Tajik scholars as their own. This website exists to document and preserve the <strong>authentic Tajik identity</strong> of historical and modern figures with <strong>verified sources</strong>.
+            </p>
+            <p style="line-height: 1.8; color: #333; margin-bottom: 12px;">
+                <strong>Tajiks</strong> are the Persian-speaking people of Central Asia (Tajikistan, Afghanistan, Uzbekistan.....). We have our own distinct identity, separate from Iranian Persians, despite sharing language roots.
+            </p>
+            <p style="line-height: 1.8; color: #333; font-weight: 600;">
+                Every scholar listed here has <strong>documented evidence</strong> of Tajik origin - birthplace, language, and historical sources.
+            </p>
+        </div>
 
         <div class="search-box">
             <input type="text" id="searchInput" placeholder="Search scholars by name...">
@@ -348,8 +401,8 @@
         <div class="scholars-grid" id="scholarsGrid"></div>
 
         <div class="feedback-section">
-            <h2>📝 Suggest a Scholar or Give Feedback</h2>
-            <p>Know a Tajik scholar we should add? Have feedback? Let us know!</p>
+            <h2>📝 Suggest a Tajik Scholar</h2>
+            <p>Know a Tajik scholar we should add? Have evidence of someone's Tajik identity? Help us build the most complete Tajik heritage database!</p>
             <form id="feedbackForm">
                 <div class="form-group">
                     <label for="submissionType">What would you like to do?</label>
