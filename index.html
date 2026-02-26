@@ -382,7 +382,7 @@ header p{font-size:clamp(.95rem,2.5vw,1.2rem);opacity:.95}
 
 <!-- Stats banner -->
 <div class="stats-banner" id="statsBanner">
-    <div class="stat-pill">36 <span>Scholars</span></div>
+    <div class="stat-pill" id="scholarCountPill">30 <span>Scholars</span></div>
     <div class="stat-pill">14 <span>Centuries</span></div>
     <div class="stat-pill">8 <span>Countries</span></div>
     <div class="stat-pill">4 <span>Disciplines</span></div>
@@ -1040,6 +1040,7 @@ window.addEventListener('scroll',()=>btt.classList.toggle('visible',window.scrol
 btt.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
 
 /* ── Init ── */
+document.getElementById('scholarCountPill').innerHTML = scholars.length + ' <span>Scholars</span>';
 applyFilters();
 </script>
 </body>
