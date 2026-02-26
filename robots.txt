@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://mohammad-tjk.github.io/tajik-scholars/sitemap.xml
