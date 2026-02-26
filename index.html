@@ -4,485 +4,432 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tajik Scholars - Complete Database of Historical and Modern Tajik Figures</title>
-    
-    <!-- Favicon (inline SVG as data URI) -->
+
+    <!-- Favicon -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
-    
-    <!-- SEO Meta Tags -->
-    <meta name="description" content="Comprehensive database of Tajik scholars, scientists, poets, and leaders throughout history. Documenting Tajik heritage with verified sources - from Imam Abu Hanifa to modern Tajik figures.">
-    <meta name="keywords" content="Tajik scholars, Tajik history, Tajik scientists, Tajik poets, Tajik heritage, Tajik identity, Tajik people, Tajikistan scholars, historical Tajiks, famous Tajiks, Tajik culture, Tajik intellectuals, Imam Bukhari Tajik, Rumi Tajik, Ibn Sina Tajik, Al-Khwarizmi Tajik, Rudaki, Ahmad Shah Massoud">
+
+    <!-- SEO -->
+    <meta name="description" content="Comprehensive database of Tajik scholars, scientists, poets, and leaders throughout history. Documenting Tajik heritage with verified sources.">
+    <meta name="keywords" content="Tajik scholars, Tajik history, Tajik scientists, Tajik poets, Tajik heritage, Tajik identity, Tajikistan scholars">
     <meta name="author" content="Tajik Heritage Archive">
-    
-    <!-- Open Graph / Social Media -->
-    <meta property="og:title" content="Tajik Scholars - Historical and Modern Tajik Figures">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Tajik Scholars — Historical and Modern Tajik Figures">
     <meta property="og:description" content="Complete database documenting Tajik scholars, scientists, poets and leaders with verified historical sources. Preserving authentic Tajik heritage.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://mohammad-tjk.github.io/tajik-scholars/">
-    
+    <meta property="og:image" content="https://mohammad-tjk.github.io/tajik-scholars/og-preview.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Tajik Scholars Database">
+
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Tajik Scholars Database">
-    <meta name="twitter:description" content="Comprehensive archive of Tajik scholars throughout history with verified sources proving Tajik identity.">
-    
-    <!-- Structured Data for Google -->
+    <meta name="twitter:description" content="Comprehensive archive of Tajik scholars throughout history with verified sources.">
+    <meta name="twitter:image" content="https://mohammad-tjk.github.io/tajik-scholars/og-preview.png">
+
+    <!-- Schema.org -->
     <script type="application/ld+json">
     {
-        "@context": "https://schema.org",
-        "@type": "EducationalWebsite",
-        "name": "Tajik Scholars Database",
-        "description": "Comprehensive database of Tajik scholars, scientists, poets, and leaders throughout history with verified sources documenting their Tajik identity",
-        "url": "https://mohammad-tjk.github.io/tajik-scholars/",
-        "about": {
-            "@type": "Thing",
-            "name": "Tajik People",
-            "description": "Historical and modern Tajik scholars and their contributions to science, literature, and Islamic scholarship"
-        },
-        "keywords": "Tajik scholars, Tajik history, Tajik scientists, Tajik heritage, Tajik identity, Tajikistan",
-        "inLanguage": "en",
-        "audience": {
-            "@type": "Audience",
-            "audienceType": "Tajik diaspora, historians, researchers, students"
-        }
+        "@context":"https://schema.org","@type":"EducationalWebsite",
+        "name":"Tajik Scholars Database",
+        "description":"Comprehensive database of Tajik scholars, scientists, poets, and leaders with verified sources",
+        "url":"https://mohammad-tjk.github.io/tajik-scholars/",
+        "keywords":"Tajik scholars, Tajik history, Tajik heritage, Tajikistan",
+        "inLanguage":"en"
     }
     </script>
-    
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            padding: 20px;
-        }
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
+:root{
+    --grad: linear-gradient(135deg,#667eea 0%,#764ba2 100%);
+    --scholar:#e67e22;
+    --scientist:#27ae60;
+    --poet:#8e44ad;
+    --leader:#2980b9;
+    --card-radius:15px;
+}
 
-        header {
-            text-align: center;
-            color: white;
-            margin-bottom: 40px;
-            padding: 20px;
-        }
+body{
+    font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;
+    background:var(--grad);
+    min-height:100vh;
+    padding:20px;
+}
 
-        header h1 {
-            font-size: clamp(2rem, 5vw, 3.5rem);
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
+.container{max-width:1200px;margin:0 auto}
 
-        header p {
-            font-size: clamp(1rem, 3vw, 1.3rem);
-            opacity: 0.95;
-        }
+/* ── Header ── */
+header{text-align:center;color:white;margin-bottom:30px;padding:20px}
+header h1{font-size:clamp(1.9rem,5vw,3.2rem);margin-bottom:8px;text-shadow:2px 2px 4px rgba(0,0,0,.3)}
+header p{font-size:clamp(.95rem,2.5vw,1.2rem);opacity:.95}
 
-        /* ── Category colour palette ── */
-        :root {
-            --color-scholar:   #e67e22;
-            --color-scientist: #27ae60;
-            --color-poet:      #8e44ad;
-            --color-leader:    #2980b9;
-        }
+/* ── Stats banner ── */
+.stats-banner{
+    display:flex;flex-wrap:wrap;justify-content:center;gap:16px;
+    margin:0 auto 28px;max-width:800px;
+}
+.stat-pill{
+    background:rgba(255,255,255,.18);backdrop-filter:blur(6px);
+    border:1px solid rgba(255,255,255,.35);
+    color:white;border-radius:50px;padding:10px 22px;
+    font-size:1rem;font-weight:700;letter-spacing:.02em;
+    text-shadow:0 1px 2px rgba(0,0,0,.2);
+}
+.stat-pill span{opacity:.8;font-weight:400;font-size:.88rem;margin-left:4px}
 
-        /* ── Filter buttons ── */
-        .filter-buttons {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 10px;
-            margin: 0 auto 30px;
-            max-width: 900px;
-        }
+/* ── Scholar of the Month ── */
+.sotm{
+    background:white;border-radius:var(--card-radius);padding:22px 28px;
+    margin:0 auto 30px;max-width:900px;
+    box-shadow:0 4px 20px rgba(0,0,0,.12);
+    border-left:6px solid gold;
+    display:flex;align-items:flex-start;gap:18px;flex-wrap:wrap;
+}
+.sotm-badge{font-size:2rem;flex-shrink:0;line-height:1}
+.sotm-body h3{color:#b8860b;font-size:.8rem;text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px}
+.sotm-body h2{color:#333;font-size:1.25rem;margin-bottom:5px}
+.sotm-body p{color:#555;font-size:.93rem;line-height:1.6}
+.sotm-btn{
+    margin-top:10px;padding:7px 18px;background:var(--grad);
+    color:white;border:none;border-radius:20px;cursor:pointer;
+    font-size:.88rem;font-weight:600;transition:opacity .2s;
+}
+.sotm-btn:hover{opacity:.85}
 
-        .filter-btn {
-            padding: 10px 20px;
-            background: white;
-            border: 2px solid transparent;
-            border-radius: 25px;
-            cursor: pointer;
-            font-size: 15px;
-            font-weight: 600;
-            color: #667eea;
-            transition: all 0.3s ease;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            white-space: nowrap;
-        }
+/* ── Why section ── */
+.why-section{
+    background:white;border-radius:var(--card-radius);padding:25px;
+    margin:0 auto 28px;max-width:900px;
+    box-shadow:0 4px 15px rgba(0,0,0,.1);
+}
+.why-section h2{color:#667eea;margin-bottom:12px;text-align:center}
+.why-section p{line-height:1.8;color:#333;margin-bottom:10px}
+.why-section p:last-child{margin-bottom:0}
 
-        .filter-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-        }
+/* ── Tajik identity explainer ── */
+.identity-box{
+    background:linear-gradient(135deg,#f8f4ff,#fff);
+    border:2px solid #c9b8f0;border-radius:var(--card-radius);
+    padding:20px 24px;margin-top:14px;
+}
+.identity-box h3{color:#764ba2;margin-bottom:8px;font-size:1rem}
+.identity-box p{color:#444;font-size:.93rem;line-height:1.7}
 
-        .filter-btn.active                          { background: #667eea; color: white; border-color: white; }
-        .filter-btn[data-category="scholar"].active  { background: var(--color-scholar);   color: white; }
-        .filter-btn[data-category="scientist"].active{ background: var(--color-scientist); color: white; }
-        .filter-btn[data-category="poet"].active     { background: var(--color-poet);      color: white; }
-        .filter-btn[data-category="leader"].active   { background: var(--color-leader);    color: white; }
+/* ── Tabs: Grid / Timeline / Bibliography ── */
+.view-tabs{
+    display:flex;justify-content:center;gap:10px;
+    margin:0 auto 22px;max-width:500px;flex-wrap:wrap;
+}
+.view-tab{
+    padding:10px 24px;background:rgba(255,255,255,.2);
+    border:2px solid rgba(255,255,255,.5);border-radius:25px;
+    color:white;font-size:.95rem;font-weight:600;cursor:pointer;
+    transition:all .25s;
+}
+.view-tab:hover{background:rgba(255,255,255,.3)}
+.view-tab.active{background:white;color:#667eea;border-color:white}
 
-        /* ── Search ── */
-        .search-box {
-            max-width: 600px;
-            margin: 0 auto 40px;
-        }
+/* ── Search + controls row ── */
+.controls{max-width:700px;margin:0 auto 22px;display:flex;gap:12px;flex-wrap:wrap}
+.search-box{flex:1;min-width:200px}
+.search-box input{
+    width:100%;padding:13px 20px;font-size:15px;
+    border:none;border-radius:50px;
+    box-shadow:0 4px 15px rgba(0,0,0,.15);outline:none;
+}
+.random-btn{
+    padding:13px 20px;background:white;border:none;border-radius:50px;
+    font-size:.9rem;font-weight:700;color:#667eea;cursor:pointer;
+    box-shadow:0 4px 15px rgba(0,0,0,.15);white-space:nowrap;
+    transition:transform .2s,box-shadow .2s;
+}
+.random-btn:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(0,0,0,.2)}
 
-        .search-box input {
-            width: 100%;
-            padding: 15px 20px;
-            font-size: 16px;
-            border: none;
-            border-radius: 50px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            outline: none;
-        }
+/* ── Filter buttons ── */
+.filter-buttons{
+    display:flex;flex-wrap:wrap;justify-content:center;
+    gap:9px;margin:0 auto 12px;max-width:900px;
+}
+.filter-btn{
+    padding:9px 18px;background:white;border:2px solid transparent;
+    border-radius:25px;cursor:pointer;font-size:14px;font-weight:600;
+    color:#667eea;transition:all .3s;box-shadow:0 2px 10px rgba(0,0,0,.1);
+    white-space:nowrap;
+}
+.filter-btn:hover{transform:translateY(-2px);box-shadow:0 4px 15px rgba(0,0,0,.2)}
+.filter-btn.active                           {background:#667eea;color:white;border-color:white}
+.filter-btn[data-category="scholar"].active  {background:var(--scholar);color:white}
+.filter-btn[data-category="scientist"].active{background:var(--scientist);color:white}
+.filter-btn[data-category="poet"].active     {background:var(--poet);color:white}
+.filter-btn[data-category="leader"].active   {background:var(--leader);color:white}
 
-        /* ── Legend ── */
-        .legend {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 12px;
-            margin: 0 auto 30px;
-            max-width: 700px;
-        }
+/* ── Legend ── */
+.legend{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin:0 auto 10px}
+.legend-item{
+    display:flex;align-items:center;gap:6px;background:white;
+    border-radius:20px;padding:5px 12px;font-size:.83rem;
+    font-weight:600;box-shadow:0 2px 8px rgba(0,0,0,.1);color:#333;
+}
+.legend-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+.legend-dot.scholar  {background:var(--scholar)}
+.legend-dot.scientist{background:var(--scientist)}
+.legend-dot.poet     {background:var(--poet)}
+.legend-dot.leader   {background:var(--leader)}
 
-        .legend-item {
-            display: flex;
-            align-items: center;
-            gap: 7px;
-            background: white;
-            border-radius: 20px;
-            padding: 6px 14px;
-            font-size: 0.88rem;
-            font-weight: 600;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            color: #333;
-        }
+/* ── Results count ── */
+.results-count{
+    text-align:center;color:rgba(255,255,255,.9);
+    font-size:.93rem;font-weight:600;margin:12px 0 18px;
+    letter-spacing:.02em;
+}
 
-        .legend-dot {
-            width: 11px;
-            height: 11px;
-            border-radius: 50%;
-            flex-shrink: 0;
-        }
+/* ── Grid view ── */
+.scholars-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(270px,1fr));
+    gap:22px;margin-bottom:40px;
+}
+.scholar-card{
+    background:white;border-radius:var(--card-radius);padding:22px;
+    cursor:pointer;transition:all .3s;
+    box-shadow:0 4px 15px rgba(0,0,0,.1);
+    border-top:5px solid #667eea;
+    display:flex;flex-direction:column;gap:6px;
+}
+.scholar-card[data-category="scholar"]  {border-top-color:var(--scholar)}
+.scholar-card[data-category="scientist"]{border-top-color:var(--scientist)}
+.scholar-card[data-category="poet"]     {border-top-color:var(--poet)}
+.scholar-card[data-category="leader"]   {border-top-color:var(--leader)}
+.scholar-card:hover{transform:translateY(-5px);box-shadow:0 8px 25px rgba(0,0,0,.2)}
 
-        .legend-dot.scholar   { background: var(--color-scholar); }
-        .legend-dot.scientist { background: var(--color-scientist); }
-        .legend-dot.poet      { background: var(--color-poet); }
-        .legend-dot.leader    { background: var(--color-leader); }
+.card-top{display:flex;align-items:center;gap:10px;margin-bottom:4px}
+.card-icon{font-size:1.6rem;line-height:1;flex-shrink:0}
+.category-badge{
+    display:inline-block;padding:3px 10px;color:white;
+    border-radius:12px;font-size:.78rem;font-weight:700;
+    background:#667eea;
+}
+.scholar-card[data-category="scholar"]  .category-badge{background:var(--scholar)}
+.scholar-card[data-category="scientist"] .category-badge{background:var(--scientist)}
+.scholar-card[data-category="poet"]      .category-badge{background:var(--poet)}
+.scholar-card[data-category="leader"]    .category-badge{background:var(--leader)}
 
-        /* ── Scholar cards ── */
-        .scholars-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 25px;
-            margin-bottom: 40px;
-        }
+.scholar-card h3{color:#222;font-size:1.15rem}
+.scholar-card .years{color:#999;font-size:.83rem}
+.scholar-card .preview{color:#555;line-height:1.55;font-size:.9rem;flex:1}
 
-        .scholar-card {
-            background: white;
-            border-radius: 15px;
-            padding: 25px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            border-top: 5px solid #667eea;
-        }
+/* ── Timeline view ── */
+#timelineView{display:none;margin-bottom:40px}
+.timeline-era{margin-bottom:36px}
+.era-label{
+    color:white;font-size:1.1rem;font-weight:700;
+    margin-bottom:12px;opacity:.9;
+    border-bottom:2px solid rgba(255,255,255,.3);
+    padding-bottom:6px;
+}
+.timeline-row{display:flex;flex-direction:column;gap:10px}
+.timeline-card{
+    background:white;border-radius:12px;padding:16px 20px;
+    display:flex;align-items:center;gap:16px;
+    box-shadow:0 3px 12px rgba(0,0,0,.1);cursor:pointer;
+    transition:all .25s;border-left:5px solid #667eea;
+}
+.timeline-card[data-category="scholar"]  {border-left-color:var(--scholar)}
+.timeline-card[data-category="scientist"]{border-left-color:var(--scientist)}
+.timeline-card[data-category="poet"]     {border-left-color:var(--poet)}
+.timeline-card[data-category="leader"]   {border-left-color:var(--leader)}
+.timeline-card:hover{transform:translateX(5px);box-shadow:0 5px 18px rgba(0,0,0,.15)}
+.timeline-icon{font-size:1.5rem;flex-shrink:0}
+.timeline-info{flex:1}
+.timeline-info h3{color:#222;font-size:1rem;margin-bottom:2px}
+.timeline-info .years{color:#888;font-size:.82rem}
+.timeline-info .preview{color:#555;font-size:.88rem;margin-top:3px}
+.timeline-badge{font-size:.75rem;font-weight:700;color:white;padding:3px 9px;border-radius:10px;background:#667eea;flex-shrink:0}
+.timeline-card[data-category="scholar"]   .timeline-badge{background:var(--scholar)}
+.timeline-card[data-category="scientist"]  .timeline-badge{background:var(--scientist)}
+.timeline-card[data-category="poet"]       .timeline-badge{background:var(--poet)}
+.timeline-card[data-category="leader"]     .timeline-badge{background:var(--leader)}
 
-        .scholar-card[data-category="scholar"]   { border-top-color: var(--color-scholar); }
-        .scholar-card[data-category="scientist"]  { border-top-color: var(--color-scientist); }
-        .scholar-card[data-category="poet"]       { border-top-color: var(--color-poet); }
-        .scholar-card[data-category="leader"]     { border-top-color: var(--color-leader); }
+/* ── Bibliography view ── */
+#bibliographyView{display:none;margin-bottom:40px}
+.bib-section{background:white;border-radius:var(--card-radius);padding:30px;margin-bottom:24px;box-shadow:0 4px 15px rgba(0,0,0,.1)}
+.bib-section h2{color:#667eea;margin-bottom:6px;font-size:1.3rem}
+.bib-section p.bib-subtitle{color:#888;font-size:.88rem;margin-bottom:18px}
+.bib-entry{padding:12px 0;border-bottom:1px solid #f0f0f0;display:flex;gap:14px;align-items:flex-start}
+.bib-entry:last-child{border-bottom:none}
+.bib-num{color:#667eea;font-weight:700;font-size:.9rem;flex-shrink:0;padding-top:2px;min-width:24px}
+.bib-text{color:#333;font-size:.93rem;line-height:1.6}
+.bib-text strong{color:#222}
+.bib-text em{color:#666}
 
-        .scholar-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
-        }
+/* ── Feedback form ── */
+.feedback-section{
+    background:white;border-radius:20px;padding:36px;
+    margin:40px auto;max-width:700px;
+    box-shadow:0 4px 20px rgba(0,0,0,.1);
+}
+.feedback-section h2{color:#667eea;margin-bottom:8px;text-align:center}
+.feedback-section>p{text-align:center;color:#666;margin-bottom:22px;font-size:.95rem}
+.form-group{margin-bottom:18px}
+.form-group label{display:block;color:#333;font-weight:600;margin-bottom:7px;font-size:.93rem}
+.form-group input,
+.form-group textarea,
+.form-group select{
+    width:100%;padding:11px 14px;border:2px solid #e0e0e0;
+    border-radius:10px;font-size:15px;font-family:inherit;
+    transition:border-color .3s;
+}
+.form-group input:focus,.form-group textarea:focus,.form-group select:focus{outline:none;border-color:#667eea}
+.form-group textarea{min-height:110px;resize:vertical}
+.submit-btn{
+    width:100%;padding:14px;background:var(--grad);
+    color:white;border:none;border-radius:10px;font-size:17px;
+    font-weight:600;cursor:pointer;transition:transform .3s,box-shadow .3s;
+}
+.submit-btn:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 6px 20px rgba(102,126,234,.4)}
+.submit-btn:disabled{opacity:.65;cursor:not-allowed}
+.success-message,.error-message{
+    display:none;padding:14px;border-radius:10px;
+    text-align:center;margin-top:14px;font-weight:600;
+}
+.success-message{background:#4caf50;color:white}
+.error-message{background:#e74c3c;color:white}
 
-        .scholar-card .category-badge {
-            display: inline-block;
-            padding: 4px 12px;
-            color: white;
-            border-radius: 12px;
-            font-size: 0.82rem;
-            margin-bottom: 8px;
-            font-weight: 600;
-        }
+/* ── Modal ── */
+.modal{
+    display:none;position:fixed;top:0;left:0;
+    width:100%;height:100%;background:rgba(0,0,0,.8);
+    z-index:1000;overflow-y:auto;padding:20px;
+}
+.modal.active{display:flex;align-items:center;justify-content:center}
+.modal-content{
+    background:white;border-radius:20px;max-width:800px;
+    width:100%;max-height:90vh;overflow-y:auto;
+    padding:38px;position:relative;
+    animation:slideIn .3s ease;
+}
+@keyframes slideIn{from{opacity:0;transform:translateY(-40px)}to{opacity:1;transform:translateY(0)}}
+.close-btn{
+    position:absolute;top:18px;right:18px;font-size:26px;
+    cursor:pointer;color:#666;width:38px;height:38px;
+    display:flex;align-items:center;justify-content:center;
+    border-radius:50%;transition:all .2s;
+}
+.close-btn:hover{background:#f0f0f0;color:#333}
+.modal-content h2{color:#667eea;margin-bottom:6px;font-size:1.8rem;padding-right:48px}
+.modal-content .years{color:#888;font-size:1rem;margin-bottom:22px}
+.info-section{margin-bottom:20px}
+.info-section h3{color:#764ba2;margin-bottom:7px;font-size:1.1rem}
+.info-section p{line-height:1.8;color:#333;font-size:.98rem}
 
-        .scholar-card[data-category="scholar"]   .category-badge { background: var(--color-scholar); }
-        .scholar-card[data-category="scientist"]  .category-badge { background: var(--color-scientist); }
-        .scholar-card[data-category="poet"]       .category-badge { background: var(--color-poet); }
-        .scholar-card[data-category="leader"]     .category-badge { background: var(--color-leader); }
+/* ── Modal share row ── */
+.modal-share{
+    display:flex;gap:10px;flex-wrap:wrap;
+    margin-top:20px;padding-top:20px;
+    border-top:2px solid #f0f0f0;align-items:center;
+}
+.modal-share span{color:#888;font-size:.88rem;font-weight:600;flex-shrink:0}
+.share-btn{
+    padding:7px 16px;border:none;border-radius:20px;
+    font-size:.85rem;font-weight:600;cursor:pointer;
+    transition:opacity .2s;
+}
+.share-btn:hover{opacity:.85}
+.share-copy{background:#667eea;color:white}
+.share-twitter{background:#1da1f2;color:white}
+.share-copied{background:#4caf50;color:white}
 
-        .scholar-card h3 {
-            color: #222;
-            margin-bottom: 6px;
-            font-size: 1.2rem;
-        }
+/* ── Back to top ── */
+#backToTop{
+    position:fixed;bottom:28px;right:28px;
+    width:46px;height:46px;border-radius:50%;
+    background:white;color:#667eea;font-size:18px;
+    font-weight:bold;border:none;cursor:pointer;
+    box-shadow:0 4px 15px rgba(0,0,0,.2);
+    display:flex;align-items:center;justify-content:center;
+    opacity:0;pointer-events:none;
+    transition:opacity .3s,transform .2s;z-index:998;
+}
+#backToTop.visible{opacity:1;pointer-events:auto}
+#backToTop:hover{transform:translateY(-3px)}
 
-        .scholar-card .years {
-            color: #888;
-            font-size: 0.88rem;
-            margin-bottom: 10px;
-        }
-
-        .scholar-card .preview {
-            color: #555;
-            line-height: 1.6;
-            font-size: 0.92rem;
-        }
-
-        /* ── Feedback form ── */
-        .feedback-section {
-            background: white;
-            border-radius: 20px;
-            padding: 40px;
-            margin: 40px auto;
-            max-width: 700px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-        }
-
-        .feedback-section h2 {
-            color: #667eea;
-            margin-bottom: 10px;
-            text-align: center;
-        }
-
-        .feedback-section > p {
-            text-align: center;
-            color: #666;
-            margin-bottom: 25px;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            color: #333;
-            font-weight: 600;
-            margin-bottom: 8px;
-        }
-
-        .form-group input,
-        .form-group textarea,
-        .form-group select {
-            width: 100%;
-            padding: 12px 15px;
-            border: 2px solid #e0e0e0;
-            border-radius: 10px;
-            font-size: 16px;
-            font-family: inherit;
-            transition: border-color 0.3s ease;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus,
-        .form-group select:focus {
-            outline: none;
-            border-color: #667eea;
-        }
-
-        .form-group textarea {
-            min-height: 120px;
-            resize: vertical;
-        }
-
-        .submit-btn {
-            width: 100%;
-            padding: 15px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border: none;
-            border-radius: 10px;
-            font-size: 18px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .submit-btn:hover:not(:disabled) {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
-        }
-
-        .submit-btn:disabled {
-            opacity: 0.65;
-            cursor: not-allowed;
-        }
-
-        .success-message {
-            display: none;
-            background: #4caf50;
-            color: white;
-            padding: 15px;
-            border-radius: 10px;
-            text-align: center;
-            margin-top: 15px;
-        }
-
-        .error-message {
-            display: none;
-            background: #e74c3c;
-            color: white;
-            padding: 15px;
-            border-radius: 10px;
-            text-align: center;
-            margin-top: 15px;
-        }
-
-        /* ── Modal ── */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background: rgba(0,0,0,0.8);
-            z-index: 1000;
-            overflow-y: auto;
-            padding: 20px;
-        }
-
-        .modal.active {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .modal-content {
-            background: white;
-            border-radius: 20px;
-            max-width: 800px;
-            width: 100%;
-            max-height: 90vh;
-            overflow-y: auto;
-            padding: 40px;
-            position: relative;
-            animation: slideIn 0.3s ease;
-        }
-
-        @keyframes slideIn {
-            from { opacity: 0; transform: translateY(-40px); }
-            to   { opacity: 1; transform: translateY(0); }
-        }
-
-        .close-btn {
-            position: absolute;
-            top: 20px; right: 20px;
-            font-size: 28px;
-            cursor: pointer;
-            color: #666;
-            width: 40px; height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            transition: all 0.2s ease;
-        }
-
-        .close-btn:hover { background: #f0f0f0; color: #333; }
-
-        .modal-content h2 {
-            color: #667eea;
-            margin-bottom: 8px;
-            font-size: 1.9rem;
-            padding-right: 50px;
-        }
-
-        .modal-content .years {
-            color: #666;
-            font-size: 1rem;
-            margin-bottom: 25px;
-        }
-
-        .info-section {
-            margin-bottom: 22px;
-        }
-
-        .info-section h3 {
-            color: #764ba2;
-            margin-bottom: 8px;
-            font-size: 1.15rem;
-        }
-
-        .info-section p {
-            line-height: 1.8;
-            color: #333;
-            font-size: 1rem;
-        }
-
-        /* ── Back to top ── */
-        #backToTop {
-            position: fixed;
-            bottom: 30px; right: 30px;
-            width: 48px; height: 48px;
-            border-radius: 50%;
-            background: white;
-            color: #667eea;
-            font-size: 20px;
-            font-weight: bold;
-            border: none;
-            cursor: pointer;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.3s ease, transform 0.2s ease;
-            z-index: 998;
-        }
-
-        #backToTop.visible {
-            opacity: 1;
-            pointer-events: auto;
-        }
-
-        #backToTop:hover { transform: translateY(-3px); }
-
-        /* ── Responsive ── */
-        @media (max-width: 600px) {
-            .filter-btn { font-size: 13px; padding: 8px 13px; }
-            .modal-content { padding: 28px 16px; }
-            .scholars-grid { grid-template-columns: 1fr; }
-            #backToTop { bottom: 18px; right: 18px; }
-            .feedback-section { padding: 30px 20px; }
-        }
-    </style>
+/* ── Responsive ── */
+@media(max-width:600px){
+    .filter-btn{font-size:12px;padding:7px 12px}
+    .modal-content{padding:26px 14px}
+    .scholars-grid{grid-template-columns:1fr}
+    .sotm{padding:18px}
+    .feedback-section{padding:26px 18px}
+    .controls{flex-direction:column}
+    .random-btn{border-radius:50px;text-align:center}
+    .stats-banner{gap:10px}
+    .stat-pill{font-size:.88rem;padding:8px 16px}
+}
+</style>
 </head>
 <body>
 <div class="container">
 
-    <header>
-        <h1>🎓 Tajik Scholars &amp; Historical Figures</h1>
-        <p>Documenting authentic Tajik heritage — Past to Present</p>
-        <p style="font-size:0.95rem;margin-top:10px;opacity:0.9;">Preserving the truth about Tajik scholars claimed by other ethnicities</p>
-    </header>
+<header>
+    <h1>🎓 Tajik Scholars &amp; Historical Figures</h1>
+    <p>Documenting authentic Tajik heritage — Past to Present</p>
+    <p style="font-size:.9rem;margin-top:8px;opacity:.85">Preserving the truth about Tajik scholars claimed by other ethnicities</p>
+</header>
 
-    <div style="background:white;border-radius:15px;padding:25px;margin:0 auto 30px;max-width:900px;box-shadow:0 4px 15px rgba(0,0,0,0.1);">
-        <h2 style="color:#667eea;margin-bottom:15px;text-align:center;">🛡️ Why This Website Exists</h2>
-        <p style="line-height:1.8;color:#333;margin-bottom:12px;">
-            For too long, <strong>Persians, Arabs, Turks and more</strong> have falsely claimed Tajik scholars as their own. This website exists to document and preserve the <strong>authentic Tajik identity</strong> of historical and modern figures with <strong>verified sources</strong>.
-        </p>
-        <p style="line-height:1.8;color:#333;margin-bottom:12px;">
-            <strong>Tajiks</strong> are the Persian-speaking people of Central Asia (Tajikistan, Afghanistan, Uzbekistan…). We have our own distinct identity, separate from Iranian Persians, despite sharing language roots.
-        </p>
-        <p style="line-height:1.8;color:#333;font-weight:600;">
-            Every scholar listed here has <strong>documented evidence</strong> of Tajik origin — birthplace, language, and historical sources.
-        </p>
+<!-- Stats banner -->
+<div class="stats-banner" id="statsBanner">
+    <div class="stat-pill">36 <span>Scholars</span></div>
+    <div class="stat-pill">14 <span>Centuries</span></div>
+    <div class="stat-pill">8 <span>Countries</span></div>
+    <div class="stat-pill">4 <span>Disciplines</span></div>
+</div>
+
+<!-- Scholar of the Month -->
+<div class="sotm" id="sotmBox">
+    <div class="sotm-badge">⭐</div>
+    <div class="sotm-body">
+        <h3>Scholar of the Month</h3>
+        <h2 id="sotmName">—</h2>
+        <p id="sotmPreview">—</p>
+        <button class="sotm-btn" id="sotmBtn">View Profile →</button>
     </div>
+</div>
 
+<!-- Why section -->
+<div class="why-section">
+    <h2>🛡️ Why This Website Exists</h2>
+    <p>For too long, <strong>Persians, Arabs, Turks and more</strong> have falsely claimed Tajik scholars as their own. This website exists to document and preserve the <strong>authentic Tajik identity</strong> of historical and modern figures with <strong>verified sources</strong>.</p>
+    <p><strong>Tajiks</strong> are the Persian-speaking people of Central Asia (Tajikistan, Afghanistan, Uzbekistan…). We have our own distinct identity, separate from Iranian Persians, despite sharing language roots.</p>
+    <p style="font-weight:600">Every scholar listed here has <strong>documented evidence</strong> of Tajik origin — birthplace, language, and historical sources.</p>
+
+    <div class="identity-box">
+        <h3>📌 What Makes Tajik Identity Distinct from Iranian Persian?</h3>
+        <p>Though Tajiks and Iranian Persians share a common language (Persian/Farsi/Dari), they are distinct peoples with different histories, homelands, and national identities. <strong>Tajiks are the indigenous Iranian-speaking people of Central Asia</strong> — specifically Khorasan, Transoxiana (modern Tajikistan/Uzbekistan), and Afghanistan. Iranian Persians descend from the people of the Iranian plateau (modern Iran).</p>
+        <p style="margin-top:8px">The Tajik cultural sphere produced its own dynasties (Samanids, Saffarids, Tahirids), its own literary tradition centred in Bukhara and Samarkand, and its own scholars rooted in Central Asian cities. When Iranian nationalist historiography claims figures like Ibn Sina or Al-Khwarizmi as "Persian," they often erase this specifically Central Asian — Tajik — dimension of their identity. This website restores it.</p>
+    </div>
+</div>
+
+<!-- View tabs -->
+<div class="view-tabs">
+    <button class="view-tab active" data-view="grid">🗂 Grid View</button>
+    <button class="view-tab" data-view="timeline">📅 Timeline</button>
+    <button class="view-tab" data-view="bibliography">📚 Bibliography</button>
+</div>
+
+<!-- Controls (search + random) — shown for grid/timeline -->
+<div class="controls" id="mainControls">
     <div class="search-box">
         <input type="text" id="searchInput" placeholder="🔍  Search scholars by name…" aria-label="Search scholars">
     </div>
+    <button class="random-btn" id="randomBtn">🎲 Random Scholar</button>
+</div>
 
+<!-- Filters + legend — shown for grid/timeline -->
+<div id="filterArea">
     <div class="filter-buttons">
         <button class="filter-btn active" data-category="all">All Scholars</button>
         <button class="filter-btn" data-category="scholar">Islamic Scholars</button>
@@ -490,80 +437,102 @@
         <button class="filter-btn" data-category="poet">Poets &amp; Writers</button>
         <button class="filter-btn" data-category="leader">Leaders &amp; Warriors</button>
     </div>
-
-    <!-- Colour legend -->
-    <div class="legend" aria-label="Category colour guide">
+    <div class="legend">
         <div class="legend-item"><span class="legend-dot scholar"></span>Islamic Scholar</div>
         <div class="legend-item"><span class="legend-dot scientist"></span>Scientist</div>
         <div class="legend-item"><span class="legend-dot poet"></span>Poet / Writer</div>
         <div class="legend-item"><span class="legend-dot leader"></span>Leader / Warrior</div>
     </div>
+</div>
 
-    <div class="scholars-grid" id="scholarsGrid"></div>
+<div class="results-count" id="resultsCount"></div>
 
-    <!-- Feedback form powered by Formspree -->
-    <div class="feedback-section">
-        <h2>📝 Suggest a Tajik Scholar</h2>
-        <p>Know a Tajik scholar we should add? Have evidence of someone's Tajik identity? Help us build the most complete Tajik heritage database!</p>
+<!-- Grid view -->
+<div class="scholars-grid" id="scholarsGrid"></div>
 
-        <!--
-            ⚙️  SETUP INSTRUCTIONS:
-            1. Visit https://formspree.io and sign up for free.
-            2. Create a new form — you'll get an endpoint like:
-               https://formspree.io/f/xyzabcde
-            3. Replace YOUR_FORM_ID below with your actual form ID.
-            Submissions will arrive directly in your email.
-        -->
-        <form id="feedbackForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+<!-- Timeline view -->
+<div id="timelineView"></div>
 
-            <div class="form-group">
-                <label for="submissionType">What would you like to do?</label>
-                <select id="submissionType" name="submissionType" required>
-                    <option value="">Select an option…</option>
-                    <option value="suggest">Suggest a new scholar</option>
-                    <option value="feedback">Give feedback on the website</option>
-                    <option value="correction">Report an error or correction</option>
-                </select>
-            </div>
-
-            <div class="form-group" id="scholarNameGroup" style="display:none;">
-                <label for="scholarName">Scholar's Name</label>
-                <input type="text" id="scholarName" name="scholarName" placeholder="e.g., Abu Rayhan Biruni">
-            </div>
-
-            <div class="form-group" id="scholarCategoryGroup" style="display:none;">
-                <label for="scholarCategory">Category</label>
-                <select id="scholarCategory" name="scholarCategory">
-                    <option value="">Select category…</option>
-                    <option value="scholar">Islamic Scholar</option>
-                    <option value="scientist">Scientist / Mathematician</option>
-                    <option value="poet">Poet / Writer</option>
-                    <option value="leader">Leader / Warrior</option>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label for="message">Details / Message</label>
-                <textarea id="message" name="message" placeholder="Provide details about the scholar (birthplace, achievements, sources) or your feedback…" required></textarea>
-            </div>
-
-            <div class="form-group">
-                <label for="contactEmail">Your Email (optional)</label>
-                <input type="email" id="contactEmail" name="_replyto" placeholder="your.email@example.com">
-            </div>
-
-            <!-- Honeypot anti-spam (hidden) -->
-            <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
-
-            <button type="submit" class="submit-btn" id="submitBtn">Submit</button>
-            <div class="success-message" id="successMessage">✓ Thank you! Your submission has been received. We'll review it shortly.</div>
-            <div class="error-message"   id="errorMessage">  ✗ Something went wrong. Please try again or email us directly.</div>
-        </form>
+<!-- Bibliography view -->
+<div id="bibliographyView">
+    <div class="bib-section">
+        <h2>📖 Primary Academic References</h2>
+        <p class="bib-subtitle">Books and encyclopaedias directly cited across scholar profiles</p>
+        <div class="bib-entry"><div class="bib-num">1</div><div class="bib-text"><strong>Foltz, Richard.</strong> <em>A History of the Tajiks: Iranians of the East.</em> Bloomsbury Academic, 2019. — Core reference establishing Tajik ethnic and cultural identity, cited for Imam Bukhari, Ibn Sina, and others.</div></div>
+        <div class="bib-entry"><div class="bib-num">2</div><div class="bib-text"><strong>Al-Dhahabi.</strong> <em>Siyar A'lam al-Nubala' (Biographies of Noble Figures).</em> 14th century. — Classical Islamic biographical dictionary; cited for Abu Hanifa's Persian ancestry from Kabul.</div></div>
+        <div class="bib-entry"><div class="bib-num">3</div><div class="bib-text"><strong>Abu Zahra, Muhammad.</strong> <em>The Four Imams.</em> Dar al-Fikr al-Arabi. — Documents the family origins of Imam Abu Hanifa as Persian/Eastern Iranian from Kabul.</div></div>
+        <div class="bib-entry"><div class="bib-num">4</div><div class="bib-text"><strong>Lewis, Franklin D.</strong> <em>Rumi: Past and Present, East and West.</em> Oneworld Publications, 2000. — University of Chicago scholar who confirmed Rumi's father lived in Wakhsh, Tajikistan.</div></div>
+        <div class="bib-entry"><div class="bib-num">5</div><div class="bib-text"><strong>Schimmel, Annemarie.</strong> <em>The Triumphal Sun: A Study of the Works of Jalāloddin Rumi.</em> SUNY Press, 1993. — States Rumi was born to Persian parents; foundational Rumi scholarship.</div></div>
+        <div class="bib-entry"><div class="bib-num">6</div><div class="bib-text"><strong>Ghafurov, Bobojon.</strong> <em>The Tajiks: Ancient, Medieval, and Modern History.</em> Irfon, Dushanbe, 1972. — The definitive Tajik historical work; authored by Tajikistan's foremost 20th-century historian.</div></div>
     </div>
+    <div class="bib-section">
+        <h2>🌐 Encyclopaedias &amp; Reference Works</h2>
+        <p class="bib-subtitle">Standard scholarly references used throughout the database</p>
+        <div class="bib-entry"><div class="bib-num">7</div><div class="bib-text"><strong>Encyclopaedia Iranica.</strong> Columbia University. <em>iranicaonline.org</em> — The most authoritative reference for Persian and Central Asian civilisation; cited for Al-Biruni, Al-Farabi, al-Tusi, and many others.</div></div>
+        <div class="bib-entry"><div class="bib-num">8</div><div class="bib-text"><strong>Encyclopaedia Britannica.</strong> — Cited for identification of Al-Khwarizmi, Ibn Sina, Omar Khayyam, and Al-Farabi as Persian scholars.</div></div>
+        <div class="bib-entry"><div class="bib-num">9</div><div class="bib-text"><strong>Tajikistan International Symposium on Abu Hanifa.</strong> Dushanbe, 2009. — Official governmental recognition of Abu Hanifa's Tajik ancestry from Parwan Province, Afghanistan.</div></div>
+    </div>
+    <div class="bib-section">
+        <h2>📜 Further Reading</h2>
+        <p class="bib-subtitle">Recommended works for deeper research into Tajik history and identity</p>
+        <div class="bib-entry"><div class="bib-num">10</div><div class="bib-text"><strong>Frye, Richard N.</strong> <em>The Heritage of Central Asia: From Antiquity to the Turkish Expansion.</em> Markus Wiener Publishers, 1996.</div></div>
+        <div class="bib-entry"><div class="bib-num">11</div><div class="bib-text"><strong>Frye, Richard N.</strong> <em>The Golden Age of Persia: The Arabs in the East.</em> Weidenfeld &amp; Nicolson, 1975. — Documents the Persian/Tajik cultural renaissance under the Samanids.</div></div>
+        <div class="bib-entry"><div class="bib-num">12</div><div class="bib-text"><strong>Bosworth, C.E.</strong> <em>The Ghaznavids: Their Empire in Afghanistan and Eastern Iran 994–1040.</em> Edinburgh University Press, 1963.</div></div>
+        <div class="bib-entry"><div class="bib-num">13</div><div class="bib-text"><strong>Negmatov, N.N.</strong> <em>The Samanid State.</em> In: <em>History of Civilizations of Central Asia,</em> Vol. IV. UNESCO, 1998. — UNESCO-published history of the Samanid Persian-Tajik dynasty.</div></div>
+        <div class="bib-entry"><div class="bib-num">14</div><div class="bib-text"><strong>Peacock, A.C.S.</strong> <em>Medieval Islamic Historiography and Political Legitimacy.</em> Routledge, 2007. — Contextualises Persian dynastic identity in the post-Arab conquest era.</div></div>
+    </div>
+</div>
+
+<!-- Feedback form -->
+<div class="feedback-section">
+    <h2>📝 Suggest a Tajik Scholar</h2>
+    <p>Know a Tajik scholar we should add? Have evidence of someone's Tajik identity? Help us build the most complete Tajik heritage database!</p>
+    <!--
+        ⚙️ SETUP: Go to formspree.io, create a free account, make a new form,
+        and replace YOUR_FORM_ID below with your actual form ID.
+        Submissions will arrive directly in your email inbox.
+    -->
+    <form id="feedbackForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+        <div class="form-group">
+            <label for="submissionType">What would you like to do?</label>
+            <select id="submissionType" name="submissionType" required>
+                <option value="">Select an option…</option>
+                <option value="suggest">Suggest a new scholar</option>
+                <option value="feedback">Give feedback on the website</option>
+                <option value="correction">Report an error or correction</option>
+            </select>
+        </div>
+        <div class="form-group" id="scholarNameGroup" style="display:none">
+            <label for="scholarName">Scholar's Name</label>
+            <input type="text" id="scholarName" name="scholarName" placeholder="e.g., Abu Rayhan Biruni">
+        </div>
+        <div class="form-group" id="scholarCategoryGroup" style="display:none">
+            <label for="scholarCategory">Category</label>
+            <select id="scholarCategory" name="scholarCategory">
+                <option value="">Select category…</option>
+                <option value="scholar">Islamic Scholar</option>
+                <option value="scientist">Scientist / Mathematician</option>
+                <option value="poet">Poet / Writer</option>
+                <option value="leader">Leader / Warrior</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="message">Details / Message</label>
+            <textarea id="message" name="message" placeholder="Provide details about the scholar (birthplace, achievements, sources) or your feedback…" required></textarea>
+        </div>
+        <div class="form-group">
+            <label for="contactEmail">Your Email (optional)</label>
+            <input type="email" id="contactEmail" name="_replyto" placeholder="your.email@example.com">
+        </div>
+        <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+        <button type="submit" class="submit-btn" id="submitBtn">Submit</button>
+        <div class="success-message" id="successMessage">✓ Thank you! Your submission has been received. We'll review it shortly.</div>
+        <div class="error-message" id="errorMessage">✗ Something went wrong. Please try again or email us directly.</div>
+    </form>
+</div>
 
 </div><!-- /.container -->
 
-<!-- Back to top -->
 <button id="backToTop" aria-label="Back to top" title="Back to top">↑</button>
 
 <!-- Modal -->
@@ -575,389 +544,369 @@
 </div>
 
 <script>
+/* ══════════════════════════════════════
+   DATA
+══════════════════════════════════════ */
 const scholars = [
     {
-        name: "Imam Abu Hanifa",
-        years: "699–767 CE",
-        category: "scholar",
-        birthplace: "Kufa, Iraq (family from Kabul, Khorasan)",
-        achievements: "Founder of the Hanafi school of Islamic jurisprudence, one of the four major Sunni schools of law. His legal methodology emphasised reason and analogy alongside Quranic and Hadith sources.",
-        famous: "His school is followed by the majority of Muslims worldwide. His family originated from Kabul with Persian/Eastern Iranian (Tajik) ancestry. His great-grandfather Marzban held a Persian title in the Sasanian Empire. Recognised by Tajikistan as a Tajik scholar with ancestry from Parwan Province, Afghanistan.",
-        preview: "Founder of Hanafi jurisprudence with Tajik ancestry from Kabul",
-        sources: "Al-Dhahabi, Siyar A'lam al-Nubala' (confirms Persian ancestry from Kabul); Muhammad Abu Zahra, The Four Imams (family origins from Kabul with Persian/Eastern Iranian ancestry); Encyclopaedia Iranica (confirms 'eastern Iranian ancestry'); Tajikistan International Symposium 2009 (recognised his ancestry from Parwan Province)"
+        name:"Imam Abu Hanifa",years:"699–767 CE",category:"scholar",
+        birthplace:"Kufa, Iraq (family from Kabul, Khorasan)",
+        achievements:"Founder of the Hanafi school of Islamic jurisprudence, one of the four major Sunni schools of law. His legal methodology emphasised reason and analogy alongside Quranic and Hadith sources.",
+        famous:"His school is followed by the majority of Muslims worldwide. His family originated from Kabul with Persian/Eastern Iranian (Tajik) ancestry. His great-grandfather Marzban held a Persian title in the Sasanian Empire. Recognised by Tajikistan as a Tajik scholar with ancestry from Parwan Province, Afghanistan.",
+        preview:"Founder of Hanafi jurisprudence with Tajik ancestry from Kabul",
+        sources:"Al-Dhahabi, Siyar A'lam al-Nubala' (confirms Persian ancestry from Kabul); Muhammad Abu Zahra, The Four Imams (family origins from Kabul with Persian/Eastern Iranian ancestry); Encyclopaedia Iranica; Tajikistan International Symposium 2009",
+        sortYear:699
     },
     {
-        name: "Imam Bukhari",
-        years: "810–870 CE",
-        category: "scholar",
-        birthplace: "Bukhara (present-day Uzbekistan)",
-        achievements: "Compiled Sahih al-Bukhari, one of the most authenticated collections of Hadith in Sunni Islam. Travelled extensively to collect and verify over 600,000 hadith traditions.",
-        famous: "His collection is considered the most authentic book after the Quran in Sunni Islam. Born to a Persian-speaking family in Bukhara during the Samanid era; his great-grandfather Bardizbah was a Zoroastrian Magi, confirming Persian heritage.",
-        preview: "Compiler of Sahih al-Bukhari, Persian-Tajik scholar from Bukhara",
-        sources: "Richard Foltz, A History of the Tajiks: Iranians of the East (2019) — 'He was of Persian descent'; great-grandfather Bardizbah was a Zoroastrian Magi with a clearly Persian name and background"
+        name:"Imam Bukhari",years:"810–870 CE",category:"scholar",
+        birthplace:"Bukhara (present-day Uzbekistan)",
+        achievements:"Compiled Sahih al-Bukhari, one of the most authenticated collections of Hadith. Travelled extensively to collect and verify over 600,000 hadith traditions.",
+        famous:"His collection is considered the most authentic book after the Quran in Sunni Islam. Born to a Persian-speaking family in Bukhara; his great-grandfather Bardizbah was a Zoroastrian Magi, confirming Persian heritage.",
+        preview:"Compiler of Sahih al-Bukhari, Persian-Tajik scholar from Bukhara",
+        sources:"Richard Foltz, A History of the Tajiks: Iranians of the East (2019) — 'He was of Persian descent'; great-grandfather Bardizbah was a Zoroastrian Magi with a clearly Persian name",
+        sortYear:810
     },
     {
-        name: "Jalal al-Din Rumi",
-        years: "1207–1273 CE",
-        category: "poet",
-        birthplace: "Balkh (Afghanistan) or Wakhsh (Tajikistan)",
-        achievements: "Mystical poet and Sufi master whose poetry transcended cultural boundaries. Founded the Mevlevi Order of whirling dervishes. Wrote the Masnavi, a six-volume spiritual epic.",
-        famous: "His Persian poetry is among the most widely read in the world. Born to Persian-speaking Tajik parents from the Balkh/Wakhsh region. Known as 'Mawlana' (Our Master) and Balkhi (from Balkh).",
-        preview: "Sufi mystic poet from Balkh/Wakhsh, master of Persian spiritual poetry",
-        sources: "Annemarie Schimmel — 'Rumi was born to Persian parents'; Franklin Lewis, University of Chicago (confirmed Rumi's father lived in Wakhsh, Tajikistan); all poetry written in Persian"
+        name:"Jalal al-Din Rumi",years:"1207–1273 CE",category:"poet",
+        birthplace:"Balkh (Afghanistan) or Wakhsh (Tajikistan)",
+        achievements:"Mystical poet and Sufi master whose poetry transcended cultural boundaries. Founded the Mevlevi Order of whirling dervishes. Wrote the Masnavi, a six-volume spiritual epic.",
+        famous:"His Persian poetry is among the most widely read in the world. Born to Persian-speaking Tajik parents from the Balkh/Wakhsh region. Known as 'Mawlana' (Our Master) and Balkhi.",
+        preview:"Sufi mystic poet from Balkh/Wakhsh, master of Persian spiritual poetry",
+        sources:"Annemarie Schimmel — 'Rumi was born to Persian parents'; Franklin Lewis, University of Chicago (confirmed Rumi's father lived in Wakhsh, Tajikistan); all poetry written in Persian",
+        sortYear:1207
     },
     {
-        name: "Abu Abdullah Rudaki",
-        years: "858–941 CE",
-        category: "poet",
-        birthplace: "Rudak, Samanid Empire (present-day Tajikistan)",
-        achievements: "Known as the 'Father of Persian Poetry'. Court poet of the Samanid dynasty; composed over 100,000 verses, though only fragments survive today.",
-        famous: "He revolutionised Persian poetry by establishing new poetic forms and standards. His eloquent style laid the foundation for all subsequent Persian literature. He was also celebrated for his musical talents.",
-        preview: "Father of Persian Poetry and pioneer of classical Persian literature",
-        sources: "Born in Rudak, present-day Tajikistan; court poet of the Samanid dynasty; universally recognised as the father of Persian poetry; all works written in Persian"
+        name:"Abu Abdullah Rudaki",years:"858–941 CE",category:"poet",
+        birthplace:"Rudak, Samanid Empire (present-day Tajikistan)",
+        achievements:"Known as the 'Father of Persian Poetry'. Court poet of the Samanid dynasty. Composed over 100,000 verses, though only fragments survive today.",
+        famous:"He revolutionised Persian poetry by establishing new poetic forms and standards. Celebrated equally for his musical talents.",
+        preview:"Father of Persian Poetry and pioneer of classical Persian literature",
+        sources:"Born in Rudak, present-day Tajikistan; court poet of the Samanid dynasty; universally recognised as the father of Persian poetry; all works written in Persian",
+        sortYear:858
     },
     {
-        name: "Abu Ali ibn Sina (Avicenna)",
-        years: "980–1037 CE",
-        category: "scientist",
-        birthplace: "Afshana, near Bukhara (present-day Uzbekistan)",
-        achievements: "One of history's most significant physicians and philosophers. Wrote The Canon of Medicine (a medical authority for centuries) and The Book of Healing (a comprehensive philosophical and scientific encyclopaedia).",
-        famous: "His medical encyclopaedia was used as a standard text in European universities until the 18th century. He made groundbreaking contributions to philosophy, astronomy, mathematics, and medicine. Born to a Persian-speaking family during the Samanid era.",
-        preview: "Legendary Persian-Tajik physician whose medical texts shaped medicine for six centuries",
-        sources: "Encyclopaedia Britannica (describes him as Persian philosopher and physician); born in Bukhara during Persian Samanid rule; all major works written in Persian and Arabic; Richard Foltz confirms Persian/Tajik identity"
+        name:"Abu Ali ibn Sina (Avicenna)",years:"980–1037 CE",category:"scientist",
+        birthplace:"Afshana, near Bukhara (present-day Uzbekistan)",
+        achievements:"Wrote The Canon of Medicine (a medical authority for centuries) and The Book of Healing (a comprehensive philosophical and scientific encyclopaedia).",
+        famous:"His medical encyclopaedia was used as a standard text in European universities until the 18th century. Born to a Persian-speaking family during the Samanid era.",
+        preview:"Legendary physician whose medical texts shaped medicine for six centuries",
+        sources:"Encyclopaedia Britannica (describes him as Persian philosopher and physician); born in Bukhara during Persian Samanid rule; Richard Foltz confirms Persian/Tajik identity",
+        sortYear:980
     },
     {
-        name: "Al-Farabi",
-        years: "872–950 CE",
-        category: "scientist",
-        birthplace: "Farab, Transoxiana (present-day Kazakhstan/Uzbekistan region)",
-        achievements: "Philosopher known as the 'Second Teacher' (after Aristotle). Made significant contributions to political philosophy, metaphysics, ethics, and logic. Wrote major commentaries on Aristotle and Plato.",
-        famous: "He attempted to synthesise Greek philosophy with Islamic thought. His works on the ideal state influenced later political philosophers. He was also accomplished in music theory and mathematics.",
-        preview: "Second Teacher of philosophy, synthesised Greek and Islamic thought",
-        sources: "Encyclopaedia Britannica and Encyclopaedia Iranica (both identify him as a Persian philosopher); born in the Persian cultural region of Transoxiana; wrote in Arabic and Persian"
+        name:"Al-Farabi",years:"872–950 CE",category:"scientist",
+        birthplace:"Farab, Transoxiana (present-day Kazakhstan/Uzbekistan region)",
+        achievements:"Philosopher known as the 'Second Teacher' (after Aristotle). Made significant contributions to political philosophy, metaphysics, ethics, and logic.",
+        famous:"He attempted to synthesise Greek philosophy with Islamic thought. His works on the ideal state influenced later political philosophers. Also accomplished in music theory and mathematics.",
+        preview:"Second Teacher of philosophy, synthesised Greek and Islamic thought",
+        sources:"Encyclopaedia Britannica and Encyclopaedia Iranica (both identify him as a Persian philosopher); born in the Persian cultural region of Transoxiana",
+        sortYear:872
     },
     {
-        name: "Al-Khwarizmi",
-        years: "780–850 CE",
-        category: "scientist",
-        birthplace: "Khwarezm (present-day Uzbekistan/Turkmenistan)",
-        achievements: "Persian mathematician and astronomer whose works introduced Arabic numerals and algebra to Europe. His name gave us the word 'algorithm' and his book title gave us 'algebra'.",
-        famous: "He revolutionised mathematics by systematising algebraic methods. His treatise on Hindu-Arabic numerals was crucial in spreading this numeral system to the West. He also contributed to geography and astronomy.",
-        preview: "Father of Algebra; introduced algorithms and Arabic numerals to Europe",
-        sources: "Encyclopaedia Britannica (identifies as Persian mathematician); born in Khwarezm, historically a Persian region; worked at the House of Wisdom in Baghdad"
+        name:"Al-Khwarizmi",years:"780–850 CE",category:"scientist",
+        birthplace:"Khwarezm (present-day Uzbekistan/Turkmenistan)",
+        achievements:"Persian mathematician whose works introduced Arabic numerals and algebra to Europe. His name gave us 'algorithm' and his book title gave us 'algebra'.",
+        famous:"He revolutionised mathematics by systematising algebraic methods. Also made important contributions to geography and astronomy.",
+        preview:"Father of Algebra; introduced algorithms and Arabic numerals to Europe",
+        sources:"Encyclopaedia Britannica (identifies as Persian mathematician); born in Khwarezm, historically a Persian region; worked at the House of Wisdom in Baghdad",
+        sortYear:780
     },
     {
-        name: "Al-Biruni",
-        years: "973–1048 CE",
-        category: "scientist",
-        birthplace: "Kath, Khwarezm (present-day Uzbekistan)",
-        achievements: "Persian polymath who made groundbreaking contributions to astronomy, mathematics, physics, medicine, and history. Wrote over 146 works on diverse scientific subjects.",
-        famous: "He accurately calculated the Earth's radius and studied Indian culture extensively. He mastered multiple languages and conducted empirical research centuries before it became standard practice.",
-        preview: "Persian-Tajik polymath who calculated Earth's radius and mastered multiple sciences",
-        sources: "Encyclopaedia Britannica (identifies as Persian scholar); Encyclopaedia Iranica (extensive documentation of Persian heritage); born in Khwarezm, historically a Persian/Tajik region"
+        name:"Al-Biruni",years:"973–1048 CE",category:"scientist",
+        birthplace:"Kath, Khwarezm (present-day Uzbekistan)",
+        achievements:"Persian polymath who made groundbreaking contributions to astronomy, mathematics, physics, medicine, and history. Wrote over 146 works.",
+        famous:"He accurately calculated the Earth's radius and studied Indian culture extensively. He mastered multiple languages and conducted empirical research centuries before it became standard practice.",
+        preview:"Polymath who calculated Earth's radius and mastered multiple sciences",
+        sources:"Encyclopaedia Britannica and Encyclopaedia Iranica (both document Persian/Tajik heritage); born in Khwarezm, historically a Persian/Tajik region",
+        sortYear:973
     },
     {
-        name: "Ferdowsi",
-        years: "940–1020 CE",
-        category: "poet",
-        birthplace: "Tus, Khorasan (present-day Iran)",
-        achievements: "Author of the Shahnameh (Book of Kings), the longest epic poem ever written by a single poet — 60,000 verses completed over 30 years.",
-        famous: "His epic preserved Persian language, mythology, and cultural identity during Arab influence. Note: Ferdowsi was born in present-day Iran; he is claimed by both Iranian Persians and the broader Persianate/Tajik cultural world — his Khorasani roots place him in the same cultural continuum as Central Asian Tajiks.",
-        preview: "Epic poet who preserved the Persian language — shared heritage of Iran and Central Asian Tajiks",
-        sources: "Universally recognised as the Persian national poet; Shahnameh written entirely in Persian; born in Khorasan, historic centre of Persian culture; his legacy spans Iran, Afghanistan, and Tajikistan"
+        name:"Ferdowsi",years:"940–1020 CE",category:"poet",
+        birthplace:"Tus, Khorasan (present-day Iran)",
+        achievements:"Author of the Shahnameh (Book of Kings), the longest epic poem ever written by a single poet — 60,000 verses over 30 years.",
+        famous:"His epic preserved Persian language and mythology. Note: Born in present-day Iran; claimed by both Iranian Persians and the broader Persianate/Tajik cultural world — his Khorasani roots place him in the same continuum as Central Asian Tajiks.",
+        preview:"Epic poet who preserved Persian language — shared heritage of Iran and Central Asian Tajiks",
+        sources:"Universally recognised as the Persian national poet; Shahnameh written entirely in Persian; born in Khorasan; his legacy spans Iran, Afghanistan, and Tajikistan",
+        sortYear:940
     },
     {
-        name: "Jami",
-        years: "1414–1492 CE",
-        category: "poet",
-        birthplace: "Jam, Khorasan (near Herat, present-day Afghanistan)",
-        achievements: "Last great classical Persian poet of the medieval period. Master of ghazal, masnavi, and rubai forms. Scholar of Sufism and Islamic theology.",
-        famous: "His poetry synthesised earlier Persian mystical traditions and influenced Ottoman and Mughal literature. His seven masnavi poems (Haft Awrang) are masterpieces of Persian literature.",
-        preview: "Last great classical Persian poet and Sufi master from Herat",
-        sources: "Born in Jam near Herat, historic Persian cultural centre; all poetry written in Persian; considered one of the last great classical Persian poets"
+        name:"Jami",years:"1414–1492 CE",category:"poet",
+        birthplace:"Jam, Khorasan (near Herat, present-day Afghanistan)",
+        achievements:"Last great classical Persian poet of the medieval period. Master of ghazal, masnavi, and rubai. Scholar of Sufism and Islamic theology.",
+        famous:"His poetry synthesised earlier Persian mystical traditions. His seven masnavi poems (Haft Awrang) are masterpieces of Persian literature that influenced Ottoman and Mughal courts.",
+        preview:"Last great classical Persian poet and Sufi master from Herat",
+        sources:"Born in Jam near Herat, historic Persian cultural centre; all poetry written in Persian; considered one of the last great classical Persian poets",
+        sortYear:1414
     },
     {
-        name: "Khwaja Abdullah Ansari",
-        years: "1006–1088 CE",
-        category: "scholar",
-        birthplace: "Herat, Khorasan (present-day Afghanistan)",
-        achievements: "Persian Sufi saint, poet, and Quranic commentator. His Munajat (Intimate Conversations with God) is a classic of Persian prose.",
-        famous: "Considered the patron saint of Herat. He defended Hanbali orthodoxy while embracing mystical experience. His shrine in Herat remains an important pilgrimage site.",
-        preview: "Sufi saint and poet from Herat, author of celebrated mystical Persian prose",
-        sources: "Born in Herat, historically a Persian/Tajik city in Khorasan; wrote in Persian; Encyclopaedia Iranica documents Persian heritage"
+        name:"Khwaja Abdullah Ansari",years:"1006–1088 CE",category:"scholar",
+        birthplace:"Herat, Khorasan (present-day Afghanistan)",
+        achievements:"Persian Sufi saint, poet, and Quranic commentator. His Munajat (Intimate Conversations with God) is a classic of Persian prose.",
+        famous:"Considered the patron saint of Herat. He defended Hanbali orthodoxy while embracing mystical experience. His shrine in Herat remains an important pilgrimage site.",
+        preview:"Sufi saint from Herat, author of celebrated mystical Persian prose",
+        sources:"Born in Herat, historically a Persian/Tajik city in Khorasan; wrote in Persian; Encyclopaedia Iranica documents Persian heritage",
+        sortYear:1006
     },
     {
-        name: "Ismail Samani",
-        years: "849–907 CE",
-        category: "leader",
-        birthplace: "Fergana Valley",
-        achievements: "Founder of the Samanid dynasty — the first independent Persian state after the Arab conquest. Made Bukhara a centre of Persian culture and Islamic learning.",
-        famous: "Under his patronage the Persian Renaissance flourished. He supported poets like Rudaki. The Tajik currency (somoni) is named after him.",
-        preview: "Founder of the Samanid Empire, patron of the Persian cultural renaissance",
-        sources: "Founder of the Persian Samanid dynasty; Tajikistan's currency (somoni) named after him; promoted Persian language and culture; historical records show Persian/Tajik ethnicity"
+        name:"Ismail Samani",years:"849–907 CE",category:"leader",
+        birthplace:"Fergana Valley",
+        achievements:"Founder of the Samanid dynasty — the first independent Persian state after the Arab conquest. Made Bukhara a centre of Persian culture and Islamic learning.",
+        famous:"Under his patronage the Persian Renaissance flourished. He supported poets like Rudaki. The Tajik currency (somoni) is named after him.",
+        preview:"Founder of the Samanid Empire, patron of the Persian cultural renaissance",
+        sources:"Founder of the Persian Samanid dynasty; Tajikistan's currency (somoni) named after him; historical records show Persian/Tajik ethnicity",
+        sortYear:849
     },
     {
-        name: "Omar Khayyam",
-        years: "1048–1131 CE",
-        category: "scientist",
-        birthplace: "Nishapur, Khorasan (present-day Iran)",
-        achievements: "Mathematician, astronomer, and poet. Developed geometric solutions to cubic equations, contributed to calendar reform, and wrote the Rubaiyat.",
-        famous: "His algebraic work was revolutionary and his poetry explored mortality, love, and the cosmos with great depth. Note: Born in present-day Iran — he belongs to the wider Khorasani Persianate tradition shared by Tajiks and Iranians.",
-        preview: "Master mathematician, astronomer and poet — shared heritage of Iran and Central Asian Tajiks",
-        sources: "Encyclopaedia Britannica (identifies as Persian poet and mathematician); Rubaiyat written in Persian; born in Nishapur, Khorasan; worked under Persian Seljuk patronage"
+        name:"Omar Khayyam",years:"1048–1131 CE",category:"scientist",
+        birthplace:"Nishapur, Khorasan (present-day Iran)",
+        achievements:"Mathematician, astronomer, and poet. Developed geometric solutions to cubic equations, contributed to calendar reform, and wrote the Rubaiyat.",
+        famous:"His algebraic work was revolutionary. His poetry explored mortality, love, and the cosmos. Note: Born in present-day Iran — he belongs to the wider Khorasani Persianate tradition shared by Tajiks and Iranians.",
+        preview:"Master mathematician, astronomer and poet — shared Khorasani heritage",
+        sources:"Encyclopaedia Britannica (identifies as Persian poet and mathematician); born in Nishapur, Khorasan; worked under Persian Seljuk patronage",
+        sortYear:1048
     },
     {
-        name: "Ahmad Shah Massoud",
-        years: "1953–2001",
-        category: "leader",
-        birthplace: "Bazarak, Panjshir Valley, Afghanistan",
-        achievements: "Tajik military leader who resisted both the Soviet invasion and the Taliban. Known as the 'Lion of Panjshir'. Served as Minister of Defence of Afghanistan.",
-        famous: "Successfully defended the Panjshir Valley against repeated Soviet and Taliban offensives. A moderate Muslim who advocated for democracy and women's rights. Assassinated two days before 9/11. Declared National Hero of Afghanistan.",
-        preview: "Lion of Panjshir, military hero who defended Afghanistan against Soviet and Taliban forces",
-        sources: "Born to a Tajik family in Panjshir Valley; spoke Dari Persian (Tajik language); Afghan government officially recognises his Tajik ethnicity; international media consistently identifies him as Tajik"
+        name:"Ahmad Shah Massoud",years:"1953–2001",category:"leader",
+        birthplace:"Bazarak, Panjshir Valley, Afghanistan",
+        achievements:"Tajik military leader who resisted both the Soviet invasion and the Taliban. Known as the 'Lion of Panjshir'. Served as Minister of Defence of Afghanistan.",
+        famous:"Successfully defended the Panjshir Valley. A moderate Muslim who advocated for democracy and women's rights. Assassinated two days before 9/11. Declared National Hero of Afghanistan.",
+        preview:"Lion of Panjshir, military hero who defended Afghanistan against Soviet and Taliban forces",
+        sources:"Born to a Tajik family in Panjshir Valley; spoke Dari Persian; Afghan government officially recognises his Tajik ethnicity; international media consistently identifies him as Tajik",
+        sortYear:1953
     },
     {
-        name: "Sadriddin Ayni",
-        years: "1878–1954",
-        category: "poet",
-        birthplace: "Soktare, Bukhara Emirate (present-day Tajikistan)",
-        achievements: "Founder of modern Tajik literature. Wrote novels, poetry, and historical works. His novel Dokhunda is considered a masterpiece of Central Asian literature.",
-        famous: "Regarded as the father of Tajik Soviet literature. He played a crucial role in preserving and modernising Tajik cultural identity and promoting literacy.",
-        preview: "Founder of modern Tajik literature and cultural renaissance leader",
-        sources: "Born in present-day Tajikistan; officially recognised as founder of Tajik literature; wrote in Tajik/Persian; celebrated as a national literary figure in Tajikistan"
+        name:"Sadriddin Ayni",years:"1878–1954",category:"poet",
+        birthplace:"Soktare, Bukhara Emirate (present-day Tajikistan)",
+        achievements:"Founder of modern Tajik literature. Wrote novels, poetry, and historical works. His novel Dokhunda is considered a masterpiece of Central Asian literature.",
+        famous:"Regarded as the father of Tajik Soviet literature. He played a crucial role in preserving and modernising Tajik cultural identity.",
+        preview:"Founder of modern Tajik literature and cultural renaissance leader",
+        sources:"Born in present-day Tajikistan; officially recognised as founder of Tajik literature; wrote in Tajik/Persian; celebrated as a national literary figure in Tajikistan",
+        sortYear:1878
     },
     {
-        name: "Bobojon Ghafurov",
-        years: "1908–1977",
-        category: "scholar",
-        birthplace: "Isfara, Russian Turkestan (present-day Tajikistan)",
-        achievements: "Prominent historian and academician. Authored The Tajiks: Ancient, Medieval, and Modern History. Served as President of the Academy of Sciences of Tajikistan.",
-        famous: "His research established Tajik national identity in the Soviet era and preserved knowledge of Persian civilisation. He trained generations of Tajik scholars.",
-        preview: "Leading historian who documented the complete history of the Tajik people",
-        sources: "Born in Isfara, Tajikistan; President of the Academy of Sciences of Tajikistan; authored the definitive The Tajiks: Ancient, Medieval, and Modern History"
+        name:"Bobojon Ghafurov",years:"1908–1977",category:"scholar",
+        birthplace:"Isfara, Russian Turkestan (present-day Tajikistan)",
+        achievements:"Prominent historian. Authored The Tajiks: Ancient, Medieval, and Modern History. Served as President of the Academy of Sciences of Tajikistan.",
+        famous:"His research established Tajik national identity in the Soviet era and preserved knowledge of Persian civilisation.",
+        preview:"Leading historian who documented the complete history of the Tajik people",
+        sources:"Born in Isfara, Tajikistan; President of the Academy of Sciences of Tajikistan; authored the definitive The Tajiks: Ancient, Medieval, and Modern History",
+        sortYear:1908
     },
     {
-        name: "Mirzo Tursunzoda",
-        years: "1911–1977",
-        category: "poet",
-        birthplace: "Karatog, Russian Turkestan (present-day Tajikistan)",
-        achievements: "One of Tajikistan's greatest poets. His epic The Voice of Asia gained international recognition. Served as chairman of the Tajik Writers' Union.",
-        famous: "His works were translated into many languages and he received the Lenin Prize for literature. A voice for peace and cultural dialogue during the Cold War.",
-        preview: "National poet whose verse championed Persian heritage and human dignity",
-        sources: "Born in Tajikistan; National Poet of Tajikistan; Chairman of the Tajik Writers' Union; Lenin Prize recipient; wrote in Tajik/Persian"
+        name:"Mirzo Tursunzoda",years:"1911–1977",category:"poet",
+        birthplace:"Karatog, Russian Turkestan (present-day Tajikistan)",
+        achievements:"One of Tajikistan's greatest poets. His epic The Voice of Asia gained international recognition. Chairman of the Tajik Writers' Union.",
+        famous:"His works were translated into many languages. He received the Lenin Prize for literature. A voice for peace and cultural dialogue during the Cold War.",
+        preview:"National poet whose verse championed Persian heritage and human dignity",
+        sources:"Born in Tajikistan; National Poet of Tajikistan; Chairman of the Tajik Writers' Union; Lenin Prize recipient; wrote in Tajik/Persian",
+        sortYear:1911
     },
     {
-        name: "Burhan al-Din al-Marghinani",
-        years: "1135–1197 CE",
-        category: "scholar",
-        birthplace: "Marghilan, Fergana Valley (present-day Uzbekistan)",
-        achievements: "Author of Al-Hidaya (The Guidance), one of the most important Hanafi fiqh manuals, used as a standard reference for Islamic jurisprudence across the Muslim world for centuries.",
-        famous: "Al-Hidaya was the primary legal textbook in Islamic courts from Central Asia to India. The British used it as a reference for Islamic law in colonial India.",
-        preview: "Author of Al-Hidaya, foundational Hanafi legal text used across the Muslim world for 800+ years",
-        sources: "Born in Marghilan, historically a Persian-speaking region of the Fergana Valley; part of the Central Asian Hanafi scholarly tradition"
+        name:"Burhan al-Din al-Marghinani",years:"1135–1197 CE",category:"scholar",
+        birthplace:"Marghilan, Fergana Valley (present-day Uzbekistan)",
+        achievements:"Author of Al-Hidaya (The Guidance), one of the most important Hanafi fiqh manuals. Standard reference for Islamic jurisprudence across the Muslim world for centuries.",
+        famous:"Al-Hidaya was the primary legal textbook in Islamic courts from Central Asia to India. The British used it as a reference for Islamic law in colonial India.",
+        preview:"Author of Al-Hidaya, foundational Hanafi legal text used across the Muslim world for 800+ years",
+        sources:"Born in Marghilan, historically a Persian-speaking region of the Fergana Valley; part of the Central Asian Hanafi scholarly tradition",
+        sortYear:1135
     },
     {
-        name: "Najm al-Din Kubra",
-        years: "1145–1221 CE",
-        category: "scholar",
-        birthplace: "Khwarezm (present-day Uzbekistan/Turkmenistan)",
-        achievements: "Founder of the Kubrawiyya Sufi order, one of Central Asia's most influential spiritual movements. Developed sophisticated theories of mystical visions and spiritual development.",
-        famous: "His Sufi order spread throughout Central Asia and influenced Persian Islamic mysticism for centuries. Martyred defending Khwarezm against the Mongol invasion.",
-        preview: "Founder of the Kubrawiyya Sufi order, major Central Asian spiritual authority",
-        sources: "Born in Khwarezm, historically a Persian/Tajik region; founded a major Central Asian Sufi order; wrote in Persian"
+        name:"Najm al-Din Kubra",years:"1145–1221 CE",category:"scholar",
+        birthplace:"Khwarezm (present-day Uzbekistan/Turkmenistan)",
+        achievements:"Founder of the Kubrawiyya Sufi order, one of Central Asia's most influential spiritual movements. Developed sophisticated theories of mystical visions.",
+        famous:"His Sufi order spread throughout Central Asia and influenced Persian Islamic mysticism for centuries. Martyred defending Khwarezm against the Mongol invasion.",
+        preview:"Founder of the Kubrawiyya Sufi order, major Central Asian spiritual authority",
+        sources:"Born in Khwarezm, historically a Persian/Tajik region; founded a major Central Asian Sufi order; wrote in Persian",
+        sortYear:1145
     },
     {
-        name: "Abu Mansur al-Maturidi",
-        years: "853–944 CE",
-        category: "scholar",
-        birthplace: "Maturid, near Samarkand (present-day Uzbekistan)",
-        achievements: "Founder of the Maturidi school of Sunni theology — one of two major schools of Islamic creed. Developed rational theological arguments defending Islamic orthodoxy.",
-        famous: "The Maturidi school became dominant throughout Central Asia, Turkey, and among Hanafi Muslims worldwide. His approach balanced reason and revelation.",
-        preview: "Founder of Maturidi theology, dominant school in Central Asia and the Hanafi tradition",
-        sources: "Born near Samarkand in Transoxiana, historically a Persian region; Maturidi school dominant in Central Asia; part of the Persian Islamic scholarly tradition"
+        name:"Abu Mansur al-Maturidi",years:"853–944 CE",category:"scholar",
+        birthplace:"Maturid, near Samarkand (present-day Uzbekistan)",
+        achievements:"Founder of the Maturidi school of Sunni theology — one of two major schools of Islamic creed. Developed rational theological arguments defending Islamic orthodoxy.",
+        famous:"The Maturidi school became dominant throughout Central Asia, Turkey, and among Hanafi Muslims worldwide.",
+        preview:"Founder of Maturidi theology, dominant school in Central Asia and the Hanafi tradition",
+        sources:"Born near Samarkand in Transoxiana, historically a Persian region; Maturidi school dominant in Central Asia",
+        sortYear:853
     },
     {
-        name: "Hakim al-Tirmidhi",
-        years: "820–892 CE",
-        category: "scholar",
-        birthplace: "Termez (present-day Uzbekistan)",
-        achievements: "Early Sufi thinker and hadith scholar. Developed theories of sainthood (wilayah) that influenced later Sufi thought. Authored over 400 works on spirituality and Islamic sciences.",
-        famous: "His writings on Islamic spirituality became foundational texts for Sufi orders. He bridged hadith scholarship with mystical theology.",
-        preview: "Early Sufi thinker from Termez, scholar of hadith and mysticism",
-        sources: "Born in Termez on the Oxus River, historically a Persian-speaking region; part of the early Persian Islamic scholarly tradition"
+        name:"Hakim al-Tirmidhi",years:"820–892 CE",category:"scholar",
+        birthplace:"Termez (present-day Uzbekistan)",
+        achievements:"Early Sufi thinker and hadith scholar. Developed theories of sainthood (wilayah) that influenced later Sufi thought. Authored over 400 works.",
+        famous:"His writings on Islamic spirituality became foundational texts for Sufi orders. He bridged hadith scholarship with mystical theology.",
+        preview:"Early Sufi thinker from Termez, scholar of hadith and mysticism",
+        sources:"Born in Termez on the Oxus River, historically a Persian-speaking region; part of the early Persian Islamic scholarly tradition",
+        sortYear:820
     },
     {
-        name: "Nasir al-Din al-Tusi",
-        years: "1201–1274 CE",
-        category: "scientist",
-        birthplace: "Tus, Khorasan (present-day Iran)",
-        achievements: "Polymath who made revolutionary contributions to astronomy, mathematics, philosophy, and ethics. Founded the Maragheh observatory; developed the Tusi couple, an astronomical model that influenced Copernicus.",
-        famous: "His astronomical work was more accurate than Ptolemy's and influenced the development of modern astronomy in Europe. Note: Born in Tus (present-day Iran) — he belongs to the wider Khorasani Persianate tradition shared by Tajiks and Iranians.",
-        preview: "Brilliant astronomer and mathematician who influenced European science — shared Khorasani heritage",
-        sources: "Encyclopaedia Iranica (extensive documentation of Persian heritage); wrote in Persian and Arabic; central figure in the Persian scientific tradition"
+        name:"Nasir al-Din al-Tusi",years:"1201–1274 CE",category:"scientist",
+        birthplace:"Tus, Khorasan (present-day Iran)",
+        achievements:"Founded the Maragheh observatory. Developed the Tusi couple, an astronomical model that influenced Copernicus. Revolutionary contributions to astronomy, mathematics, philosophy, and ethics.",
+        famous:"His astronomical work was more accurate than Ptolemy's and influenced the development of modern astronomy in Europe. Belongs to the wider Khorasani Persianate tradition shared by Tajiks and Iranians.",
+        preview:"Brilliant astronomer who influenced European science — shared Khorasani heritage",
+        sources:"Encyclopaedia Iranica (extensive documentation of Persian heritage); wrote in Persian and Arabic; central figure in the Persian scientific tradition",
+        sortYear:1201
     },
     {
-        name: "Al-Fergani (Ahmad ibn Kathir)",
-        years: "9th century CE",
-        category: "scientist",
-        birthplace: "Ferghana Valley",
-        achievements: "Astronomer whose work on celestial mechanics was translated into Latin and became a standard textbook in medieval Europe. Calculated Earth's diameter with remarkable accuracy.",
-        famous: "His astronomy books were used in European universities for centuries. Dante Alighieri cited Al-Fergani in the Divine Comedy.",
-        preview: "Astronomer from the Fergana Valley whose books were standard texts in medieval Europe",
-        sources: "Born in the Fergana Valley, historically a Persian-speaking region; name 'Al-Fergani' indicates Ferghana origin; part of the Persian scientific tradition"
+        name:"Al-Fergani (Ahmad ibn Kathir)",years:"9th century CE",category:"scientist",
+        birthplace:"Ferghana Valley",
+        achievements:"Astronomer whose work on celestial mechanics was translated into Latin and became standard in medieval Europe. Calculated Earth's diameter with remarkable accuracy.",
+        famous:"His astronomy books were used in European universities for centuries. Dante Alighieri cited Al-Fergani in the Divine Comedy.",
+        preview:"Astronomer from the Fergana Valley, standard text in medieval European universities",
+        sources:"Born in the Fergana Valley, historically a Persian-speaking region; name 'Al-Fergani' indicates Ferghana origin",
+        sortYear:820
     },
     {
-        name: "Sharaf al-Din al-Tusi",
-        years: "1135–1213 CE",
-        category: "scientist",
-        birthplace: "Tus, Khorasan (present-day Iran)",
-        achievements: "Mathematician who made significant advances in algebra, particularly in solving cubic equations. Developed early concepts that anticipated calculus.",
-        famous: "His algebraic methods were more advanced than those of his European contemporaries. He used numerical and graphical methods to solve equations centuries before these techniques appeared in Europe.",
-        preview: "Pioneering mathematician who advanced algebra and cubic equation theory",
-        sources: "Born in Tus, Khorasan; Encyclopaedia Iranica documents Persian heritage; part of the Persian mathematical tradition"
+        name:"Sharaf al-Din al-Tusi",years:"1135–1213 CE",category:"scientist",
+        birthplace:"Tus, Khorasan (present-day Iran)",
+        achievements:"Mathematician who made significant advances in algebra, particularly in solving cubic equations. Developed early concepts that anticipated calculus.",
+        famous:"His algebraic methods were more advanced than those of his European contemporaries. He used numerical and graphical methods to solve equations centuries before they appeared in Europe.",
+        preview:"Pioneering mathematician who advanced algebra and anticipated calculus",
+        sources:"Born in Tus, Khorasan; Encyclopaedia Iranica documents Persian heritage; part of the Persian mathematical tradition",
+        sortYear:1135
     },
     {
-        name: "Abu Rayhan al-Sijzi",
-        years: "10th century CE",
-        category: "scientist",
-        birthplace: "Sistan (present-day Iran/Afghanistan border)",
-        achievements: "Astronomer and mathematician who proposed that the Earth rotates on its axis — a remarkably early heliocentric idea. Contributed to the development of astronomical instruments.",
-        famous: "He suggested the possibility of Earth's rotation centuries before Copernicus. He corresponded with Al-Biruni on mathematical and astronomical problems.",
-        preview: "Astronomer from Sistan who proposed early ideas of Earth's rotation",
-        sources: "Born in Sistan, historically a Persian region; corresponded with Al-Biruni; part of the Persian scientific tradition"
+        name:"Abu Rayhan al-Sijzi",years:"10th century CE",category:"scientist",
+        birthplace:"Sistan (present-day Iran/Afghanistan border)",
+        achievements:"Astronomer who proposed Earth rotates on its axis — a remarkably early heliocentric idea. Contributed to the development of astronomical instruments.",
+        famous:"He suggested Earth's rotation centuries before Copernicus. He corresponded with Al-Biruni on mathematical and astronomical problems.",
+        preview:"Astronomer from Sistan who proposed early ideas of Earth's rotation",
+        sources:"Born in Sistan, historically a Persian region; corresponded with Al-Biruni; part of the Persian scientific tradition",
+        sortYear:950
     },
     {
-        name: "Sanai of Ghazni",
-        years: "1080–1131 CE",
-        category: "poet",
-        birthplace: "Ghazni (present-day Afghanistan)",
-        achievements: "One of the first major Persian Sufi poets. Authored Hadiqat al-Haqiqat (The Garden of Truth), pioneering the use of poetry for spiritual teaching.",
-        famous: "He transformed Persian poetry by making it a vehicle for mystical and philosophical expression. His work heavily influenced Rumi, Attar, and all subsequent Sufi poets.",
-        preview: "Pioneer of Persian Sufi poetry who influenced Rumi and Attar",
-        sources: "Born in Ghazni, historically a Persian city; all poetry in Persian; considered the father of Persian mystical poetry"
+        name:"Sanai of Ghazni",years:"1080–1131 CE",category:"poet",
+        birthplace:"Ghazni (present-day Afghanistan)",
+        achievements:"One of the first major Persian Sufi poets. Authored Hadiqat al-Haqiqat (The Garden of Truth), pioneering the use of poetry for spiritual teaching.",
+        famous:"He transformed Persian poetry into a vehicle for mystical expression. His work heavily influenced Rumi, Attar, and all subsequent Sufi poets.",
+        preview:"Pioneer of Persian Sufi poetry who influenced Rumi and Attar",
+        sources:"Born in Ghazni, historically a Persian city; all poetry in Persian; considered the father of Persian mystical poetry",
+        sortYear:1080
     },
     {
-        name: "Attar of Nishapur",
-        years: "1145–1221 CE",
-        category: "poet",
-        birthplace: "Nishapur, Khorasan (present-day Iran)",
-        achievements: "Author of Conference of the Birds (Mantiq al-Tayr), one of Persian literature's greatest mystical epics. Compiled biographies of Sufi saints in Tadhkirat al-Awliya.",
-        famous: "His allegorical masterpiece describes the soul's journey to God. He profoundly influenced Rumi, who called him his spiritual guide. Note: Born in Nishapur (present-day Iran) — his Khorasani roots place him in the same cultural sphere as Central Asian Tajiks.",
-        preview: "Author of Conference of the Birds — spiritual epic of the Persian tradition",
-        sources: "Encyclopaedia Iranica documents Persian heritage; all works in Persian; born in Khorasan, the historic heart of Persian culture"
+        name:"Attar of Nishapur",years:"1145–1221 CE",category:"poet",
+        birthplace:"Nishapur, Khorasan (present-day Iran)",
+        achievements:"Author of Conference of the Birds (Mantiq al-Tayr). Compiled biographies of Sufi saints in Tadhkirat al-Awliya.",
+        famous:"His allegorical masterpiece describes the soul's journey to God. He profoundly influenced Rumi, who called him his spiritual guide. His Khorasani roots place him in the same cultural sphere as Central Asian Tajiks.",
+        preview:"Author of Conference of the Birds, spiritual epic of the Persian tradition",
+        sources:"Encyclopaedia Iranica documents Persian heritage; all works in Persian; born in Khorasan, the historic heart of Persian culture",
+        sortYear:1145
     },
     {
-        name: "Nizami Ganjavi",
-        years: "1141–1209 CE",
-        category: "poet",
-        birthplace: "Ganja (present-day Azerbaijan)",
-        achievements: "Master of romantic epic poetry, author of the Khamsa (Five Treasures), including Layla and Majnun and Khosrow and Shirin.",
-        famous: "His romantic epics set the standard for all subsequent Persian poetry. The Khamsa influenced Persian, Turkish, and Urdu literature for centuries.",
-        preview: "Master of romantic epic poetry in the Persian tradition",
-        sources: "Wrote exclusively in Persian; born in Ganja, part of the historical Persian cultural sphere; considered one of the greatest Persian poets"
+        name:"Nizami Ganjavi",years:"1141–1209 CE",category:"poet",
+        birthplace:"Ganja (present-day Azerbaijan)",
+        achievements:"Master of romantic epic poetry, author of the Khamsa (Five Treasures), including Layla and Majnun and Khosrow and Shirin.",
+        famous:"His romantic epics set the standard for all subsequent Persian poetry. The Khamsa influenced Persian, Turkish, and Urdu literature for centuries.",
+        preview:"Master of romantic epic poetry in the Persian tradition",
+        sources:"Wrote exclusively in Persian; born in Ganja, part of the historical Persian cultural sphere; considered one of the greatest Persian poets",
+        sortYear:1141
     },
     {
-        name: "Bidel Dehlavi",
-        years: "1644–1720 CE",
-        category: "poet",
-        birthplace: "Azimabad (Patna), India",
-        achievements: "One of the most influential Persian poets in the Indian subcontinent. His complex philosophical poetry combined mysticism with social commentary.",
-        famous: "Extremely influential in Tajikistan, Uzbekistan, and Afghanistan — considered the national poet of Afghanistan. His works are widely read in Central Asia and remain part of the literary curriculum.",
-        preview: "Highly influential in the Tajik literary tradition, especially in Central Asian schools",
-        sources: "Wrote in Persian; considered the national poet of Afghanistan; extremely influential in the Tajik and Central Asian literary tradition; widely taught in Bukhara and Samarkand literary circles"
+        name:"Bidel Dehlavi",years:"1644–1720 CE",category:"poet",
+        birthplace:"Azimabad (Patna), India",
+        achievements:"One of the most influential Persian poets of the subcontinent. His complex philosophical poetry combined mysticism with social commentary.",
+        famous:"Extremely influential in Tajikistan, Uzbekistan, and Afghanistan — considered the national poet of Afghanistan. His works remain part of the Central Asian literary curriculum.",
+        preview:"Highly influential in the Tajik literary tradition, especially in Central Asian schools",
+        sources:"Wrote in Persian; considered the national poet of Afghanistan; extremely influential in the Tajik and Central Asian literary tradition",
+        sortYear:1644
     },
     {
-        name: "Yaqub ibn al-Layth al-Saffar",
-        years: "840–879 CE",
-        category: "leader",
-        birthplace: "Sistan (present-day Iran/Afghanistan)",
-        achievements: "Founder of the Saffarid dynasty — the first indigenous Persian dynasty to rule after the Arab conquest. Successfully challenged Abbasid authority in the eastern Islamic lands.",
-        famous: "He revived Persian political power and promoted Persian language and culture. His famous letter to the Abbasid caliph rejecting Arabic in favour of Persian became a symbol of Persian cultural revival.",
-        preview: "Early Persian ruler who revived Persian political power after Arab rule",
-        sources: "Born in Sistan, historically a Persian region; promoted Persian language and culture; historical sources document Persian/Eastern Iranian origin"
+        name:"Yaqub ibn al-Layth al-Saffar",years:"840–879 CE",category:"leader",
+        birthplace:"Sistan (present-day Iran/Afghanistan)",
+        achievements:"Founder of the Saffarid dynasty — the first indigenous Persian dynasty after the Arab conquest. Successfully challenged Abbasid authority in the eastern Islamic lands.",
+        famous:"He revived Persian political power and promoted Persian language. His famous letter to the Abbasid caliph rejecting Arabic in favour of Persian became a symbol of Persian cultural revival.",
+        preview:"Early Persian ruler who revived Persian political power after Arab rule",
+        sources:"Born in Sistan, historically a Persian region; promoted Persian language and culture; historical sources document Persian/Eastern Iranian origin",
+        sortYear:840
     },
     {
-        name: "Tahir ibn Husayn",
-        years: "775–822 CE",
-        category: "leader",
-        birthplace: "Khorasan",
-        achievements: "Founder of the Tahirid dynasty, establishing semi-autonomous Persian rule in Khorasan. Key military leader in the Abbasid civil wars.",
-        famous: "Established one of the first Persian dynasties after the Arab conquest, paving the way for the Persian cultural renaissance. His dynasty promoted Persian administrators and scholars.",
-        preview: "Founder of the Tahirid dynasty in Khorasan, early Persian revival",
-        sources: "From Khorasan, historically the Persian heartland; founded a dynasty that promoted Persian culture; historical chronicles document Persian origin"
+        name:"Tahir ibn Husayn",years:"775–822 CE",category:"leader",
+        birthplace:"Khorasan",
+        achievements:"Founder of the Tahirid dynasty, establishing semi-autonomous Persian rule in Khorasan. Key military leader in the Abbasid civil wars.",
+        famous:"Established one of the first Persian dynasties after the Arab conquest, paving the way for the Persian cultural renaissance.",
+        preview:"Founder of the Tahirid dynasty in Khorasan, early Persian revival",
+        sources:"From Khorasan, historically the Persian heartland; founded a dynasty that promoted Persian culture; historical chronicles document Persian origin",
+        sortYear:775
     },
     {
-        name: "Abu Muslim Khorasani",
-        years: "718–755 CE",
-        category: "leader",
-        birthplace: "Khorasan (likely Isfahan region)",
-        achievements: "Key military leader in the Abbasid revolution that overthrew the Umayyad Caliphate. Organised the rebellion from Khorasan that changed Islamic history.",
-        famous: "Led the Persian-supported revolution that brought the Abbasids to power. Became a legendary figure in Persian folklore and literature. His movement drew on Persian resentment of Umayyad Arab supremacy.",
-        preview: "Revolutionary leader from Khorasan who led the Abbasid revolution",
-        sources: "Based in Khorasan; historical sources indicate Persian/Iranian origin; symbol of Persian political resurgence; central figure in Persian historical narratives"
+        name:"Abu Muslim Khorasani",years:"718–755 CE",category:"leader",
+        birthplace:"Khorasan (likely Isfahan region)",
+        achievements:"Key military leader in the Abbasid revolution that overthrew the Umayyad Caliphate. Organised the rebellion from Khorasan that changed Islamic history.",
+        famous:"Led the Persian-supported revolution that brought the Abbasids to power. Became a legendary figure in Persian folklore. His movement drew on Persian resentment of Umayyad Arab supremacy.",
+        preview:"Revolutionary leader from Khorasan who led the Abbasid revolution",
+        sources:"Based in Khorasan; historical sources indicate Persian/Iranian origin; symbol of Persian political resurgence",
+        sortYear:718
     },
     {
-        name: "Emomali Rahmon",
-        years: "1952–present",
-        category: "leader",
-        birthplace: "Danghara, Tajik SSR (present-day Tajikistan)",
-        achievements: "President of Tajikistan since 1994. Led the country through civil war and established stability. Promoted Tajik national identity and Persian cultural heritage.",
-        famous: "Longest-serving leader in Tajikistan's modern history. Renamed the Tajik currency after Ismail Samani to promote national historical consciousness.",
-        preview: "President of Tajikistan since 1994, champion of Tajik identity",
-        sources: "Born in Tajikistan; current president; official Tajik government records; widely recognised as Tajik political leader"
+        name:"Emomali Rahmon",years:"1952–present",category:"leader",
+        birthplace:"Danghara, Tajik SSR (present-day Tajikistan)",
+        achievements:"President of Tajikistan since 1994. Led the country through civil war and established stability. Promoted Tajik national identity and Persian cultural heritage.",
+        famous:"Longest-serving leader in Tajikistan's modern history. Renamed the Tajik currency after Ismail Samani to promote national historical consciousness.",
+        preview:"President of Tajikistan since 1994, champion of Tajik identity",
+        sources:"Born in Tajikistan; current president; official Tajik government records",
+        sortYear:1952
     },
     {
-        name: "Dilshod Nazarov",
-        years: "1982–present",
-        category: "leader",
-        birthplace: "Dushanbe, Tajik SSR (present-day Tajikistan)",
-        achievements: "Hammer thrower who won Tajikistan's first Olympic gold medal at the 2016 Rio Olympics. Multiple-time Asian champion and world championship medallist.",
-        famous: "Became a national hero as Tajikistan's first Olympic champion. His victory united the country in celebration and pride.",
-        preview: "Tajikistan's first Olympic gold medallist (Rio 2016), national sports hero",
-        sources: "Born in Dushanbe, Tajikistan; official Olympic records; represents Tajikistan internationally"
+        name:"Dilshod Nazarov",years:"1982–present",category:"leader",
+        birthplace:"Dushanbe, Tajik SSR (present-day Tajikistan)",
+        achievements:"Hammer thrower who won Tajikistan's first Olympic gold medal at the 2016 Rio Olympics. Multiple-time Asian champion.",
+        famous:"Became a national hero as Tajikistan's first Olympic champion. His victory united the country in celebration and pride.",
+        preview:"Tajikistan's first Olympic gold medallist (Rio 2016), national sports hero",
+        sources:"Born in Dushanbe, Tajikistan; official Olympic records; represents Tajikistan internationally",
+        sortYear:1982
     },
     {
-        name: "Manizha (Manizha Sangin)",
-        years: "1991–present",
-        category: "poet",
-        birthplace: "Dushanbe, Tajik SSR (present-day Tajikistan)",
-        achievements: "Internationally recognised singer-songwriter and activist. Represented Russia at Eurovision 2021. Advocates for women's rights and against domestic violence.",
-        famous: "Broke barriers as a Tajik-Russian artist addressing feminist themes. Her song 'Russian Woman' challenged stereotypes and went viral. She advocates for Central Asian and Tajik cultural visibility globally.",
-        preview: "Internationally recognised Tajik-born singer and activist",
-        sources: "Born in Dushanbe, Tajikistan; publicly identifies as Tajik; international media coverage confirms Tajik heritage"
+        name:"Manizha (Manizha Sangin)",years:"1991–present",category:"poet",
+        birthplace:"Dushanbe, Tajik SSR (present-day Tajikistan)",
+        achievements:"Internationally recognised singer-songwriter and activist. Represented Russia at Eurovision 2021. Advocates for women's rights and against domestic violence.",
+        famous:"Broke barriers as a Tajik-Russian artist addressing feminist themes. Her song 'Russian Woman' challenged stereotypes and went viral.",
+        preview:"Internationally recognised Tajik-born singer and activist",
+        sources:"Born in Dushanbe, Tajikistan; publicly identifies as Tajik; international media coverage confirms Tajik heritage",
+        sortYear:1991
     },
     {
-        name: "Burhanuddin Rabbani",
-        years: "1940–2011",
-        category: "leader",
-        birthplace: "Fayzabad, Badakhshan Province, Afghanistan",
-        achievements: "Former President of Afghanistan (1992–1996, 2001). Leader of Jamiat-e Islami party. Key figure in Afghan resistance against Soviet occupation.",
-        famous: "Major Tajik political leader. Advocated for Tajik rights within the Afghan government. Assassinated by a Taliban suicide bomber in 2011.",
-        preview: "Former President of Afghanistan, major Tajik political leader",
-        sources: "Born in Badakhshan, historically a Tajik region; Tajik ethnicity well-documented; led the Tajik-dominated Jamiat-e Islami party; spoke Dari Persian (Tajik)"
+        name:"Burhanuddin Rabbani",years:"1940–2011",category:"leader",
+        birthplace:"Fayzabad, Badakhshan Province, Afghanistan",
+        achievements:"Former President of Afghanistan (1992–1996, 2001). Leader of Jamiat-e Islami party. Key figure in Afghan resistance against Soviet occupation.",
+        famous:"Major Tajik political leader. Advocated for Tajik rights within the Afghan government. Assassinated by a Taliban suicide bomber in 2011.",
+        preview:"Former President of Afghanistan, major Tajik political leader",
+        sources:"Born in Badakhshan, historically a Tajik region; Tajik ethnicity well-documented; led the Tajik-dominated Jamiat-e Islami party; spoke Dari Persian",
+        sortYear:1940
     }
-    /* Note: Qutayba ibn Muslim removed — he was explicitly identified as Arab and does not belong in this database */
 ];
 
-const categoryNames = {
-    scholar:   'Islamic Scholar',
-    scientist: 'Scientist',
-    poet:      'Poet / Writer',
-    leader:    'Leader / Warrior'
-};
+/* Category icons */
+const catIcon = {scholar:'📖',scientist:'⚗️',poet:'✍️',leader:'⚔️'};
+const catName  = {scholar:'Islamic Scholar',scientist:'Scientist',poet:'Poet / Writer',leader:'Leader / Warrior'};
 
+/* ── Scholar of the Month (deterministic: changes monthly) ── */
+function initSOTM(){
+    const idx = new Date().getMonth() % scholars.length;
+    const s   = scholars[idx];
+    document.getElementById('sotmName').textContent    = s.name + ' (' + s.years + ')';
+    document.getElementById('sotmPreview').textContent = s.preview;
+    document.getElementById('sotmBtn').onclick = () => openModal(scholars.indexOf(s));
+}
+initSOTM();
+
+/* ── State ── */
 let currentFilter = 'all';
+let currentView   = 'grid';
+let currentSearch = '';
 
-function renderScholars(list) {
+/* ── Render: Grid ── */
+function renderGrid(list){
     const grid = document.getElementById('scholarsGrid');
-    if (!list.length) {
-        grid.innerHTML = '<p style="color:white;text-align:center;grid-column:1/-1;font-size:1.1rem;padding:40px 0;">No scholars found.</p>';
+    if(!list.length){
+        grid.innerHTML='<p style="color:white;text-align:center;grid-column:1/-1;font-size:1.1rem;padding:40px 0">No scholars found.</p>';
         return;
     }
     grid.innerHTML = list.map(s => {
         const idx = scholars.indexOf(s);
-        return `<div class="scholar-card" data-category="${s.category}" onclick="openModal(${idx})" tabindex="0" role="button" aria-label="View details for ${s.name}">
-            <div class="category-badge">${categoryNames[s.category]}</div>
+        return `<div class="scholar-card" data-category="${s.category}" onclick="openModal(${idx})" tabindex="0" role="button" aria-label="View ${s.name}">
+            <div class="card-top">
+                <span class="card-icon">${catIcon[s.category]}</span>
+                <span class="category-badge">${catName[s.category]}</span>
+            </div>
             <h3>${s.name}</h3>
             <div class="years">${s.years}</div>
             <div class="preview">${s.preview}</div>
@@ -965,99 +914,187 @@ function renderScholars(list) {
     }).join('');
 }
 
-function openModal(index) {
-    const s = scholars[index];
-    document.getElementById('modalBody').innerHTML = `
-        <h2>${s.name}</h2>
-        <div class="years">${s.years}</div>
-        <div class="info-section"><h3>📍 Birthplace</h3><p>${s.birthplace}</p></div>
-        <div class="info-section"><h3>🏆 Major Achievements</h3><p>${s.achievements}</p></div>
-        <div class="info-section"><h3>⭐ Why They're Famous</h3><p>${s.famous}</p></div>
-        <div class="info-section"><h3>📚 Sources &amp; Evidence</h3><p>${s.sources}</p></div>`;
-    document.getElementById('modal').classList.add('active');
-    document.body.style.overflow = 'hidden';
+/* ── Render: Timeline ── */
+const eraRanges = [
+    {label:'7th–8th Century (600–799 CE)',min:600,max:799},
+    {label:'9th Century (800–899 CE)',min:800,max:899},
+    {label:'10th Century (900–999 CE)',min:900,max:999},
+    {label:'11th Century (1000–1099 CE)',min:1000,max:1099},
+    {label:'12th Century (1100–1199 CE)',min:1100,max:1199},
+    {label:'13th Century (1200–1299 CE)',min:1200,max:1299},
+    {label:'14th–17th Century (1300–1699)',min:1300,max:1699},
+    {label:'18th–20th Century (1700–1999)',min:1700,max:1999},
+    {label:'21st Century (2000–present)',min:2000,max:2100},
+];
+
+function renderTimeline(list){
+    const tl = document.getElementById('timelineView');
+    let html  = '';
+    const sorted = [...list].sort((a,b)=>a.sortYear-b.sortYear);
+    eraRanges.forEach(era=>{
+        const inEra = sorted.filter(s=>s.sortYear>=era.min && s.sortYear<=era.max);
+        if(!inEra.length) return;
+        html += `<div class="timeline-era">
+            <div class="era-label">⏳ ${era.label}</div>
+            <div class="timeline-row">
+            ${inEra.map(s=>{
+                const idx=scholars.indexOf(s);
+                return `<div class="timeline-card" data-category="${s.category}" onclick="openModal(${idx})">
+                    <span class="timeline-icon">${catIcon[s.category]}</span>
+                    <div class="timeline-info">
+                        <h3>${s.name}</h3>
+                        <div class="years">${s.years}</div>
+                        <div class="preview">${s.preview}</div>
+                    </div>
+                    <span class="timeline-badge">${catName[s.category]}</span>
+                </div>`;
+            }).join('')}
+            </div>
+        </div>`;
+    });
+    tl.innerHTML = html || '<p style="color:white;text-align:center;padding:40px 0">No scholars found.</p>';
 }
 
-function closeModal() {
-    document.getElementById('modal').classList.remove('active');
-    document.body.style.overflow = 'auto';
+/* ── Apply filters & render ── */
+function applyFilters(){
+    let list = currentFilter==='all' ? scholars : scholars.filter(s=>s.category===currentFilter);
+    if(currentSearch) list = list.filter(s=>s.name.toLowerCase().includes(currentSearch));
+    document.getElementById('resultsCount').textContent =
+        list.length === scholars.length
+            ? `Showing all ${scholars.length} scholars`
+            : `Showing ${list.length} of ${scholars.length} scholars`;
+    if(currentView==='grid')     renderGrid(list);
+    else if(currentView==='timeline') renderTimeline(list);
 }
 
-document.getElementById('modal').addEventListener('click', e => { if (e.target === e.currentTarget) closeModal(); });
-document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+/* ── View tabs ── */
+document.querySelectorAll('.view-tab').forEach(btn=>{
+    btn.addEventListener('click',function(){
+        document.querySelectorAll('.view-tab').forEach(b=>b.classList.remove('active'));
+        this.classList.add('active');
+        currentView = this.dataset.view;
 
-/* keyboard support for cards */
-document.getElementById('scholarsGrid').addEventListener('keydown', e => {
-    if (e.key === 'Enter' || e.key === ' ') e.target.click();
+        document.getElementById('scholarsGrid').style.display      = currentView==='grid'      ? 'grid'  : 'none';
+        document.getElementById('timelineView').style.display      = currentView==='timeline'  ? 'block' : 'none';
+        document.getElementById('bibliographyView').style.display  = currentView==='bibliography' ? 'block' : 'none';
+        document.getElementById('mainControls').style.display      = currentView==='bibliography' ? 'none' : 'flex';
+        document.getElementById('filterArea').style.display        = currentView==='bibliography' ? 'none' : 'block';
+        document.getElementById('resultsCount').style.display      = currentView==='bibliography' ? 'none' : 'block';
+
+        if(currentView!=='bibliography') applyFilters();
+    });
 });
 
-function applyFilters() {
-    const term = document.getElementById('searchInput').value.toLowerCase().trim();
-    let list = currentFilter === 'all' ? scholars : scholars.filter(s => s.category === currentFilter);
-    if (term) list = list.filter(s => s.name.toLowerCase().includes(term));
-    renderScholars(list);
-}
+/* ── Search ── */
+document.getElementById('searchInput').addEventListener('input',function(){
+    currentSearch = this.value.toLowerCase().trim();
+    applyFilters();
+});
 
-document.getElementById('searchInput').addEventListener('input', applyFilters);
-
-document.querySelectorAll('.filter-btn').forEach(btn => {
-    btn.addEventListener('click', function() {
-        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+/* ── Filter buttons ── */
+document.querySelectorAll('.filter-btn').forEach(btn=>{
+    btn.addEventListener('click',function(){
+        document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
         this.classList.add('active');
         currentFilter = this.dataset.category;
         applyFilters();
     });
 });
 
-/* Form type toggle */
-document.getElementById('submissionType').addEventListener('change', function() {
-    const show = this.value === 'suggest';
-    ['scholarNameGroup','scholarCategoryGroup'].forEach(id => {
-        document.getElementById(id).style.display = show ? 'block' : 'none';
+/* ── Random scholar ── */
+document.getElementById('randomBtn').addEventListener('click',()=>{
+    const idx = Math.floor(Math.random()*scholars.length);
+    openModal(idx);
+});
+
+/* ── Modal ── */
+let currentModalIdx = null;
+function openModal(index){
+    currentModalIdx = index;
+    const s = scholars[index];
+    const shareUrl = encodeURIComponent(window.location.href + '#' + s.name.replace(/\s+/g,'-'));
+    const tweetText = encodeURIComponent(`Learn about ${s.name} — a Tajik scholar! ${window.location.href}`);
+    document.getElementById('modalBody').innerHTML = `
+        <h2>${catIcon[s.category]} ${s.name}</h2>
+        <div class="years">${s.years} · <span style="background:${getCatColor(s.category)};color:white;padding:2px 10px;border-radius:10px;font-size:.8rem;font-weight:700">${catName[s.category]}</span></div>
+        <div class="info-section"><h3>📍 Birthplace</h3><p>${s.birthplace}</p></div>
+        <div class="info-section"><h3>🏆 Major Achievements</h3><p>${s.achievements}</p></div>
+        <div class="info-section"><h3>⭐ Why They're Famous</h3><p>${s.famous}</p></div>
+        <div class="info-section"><h3>📚 Sources &amp; Evidence</h3><p>${s.sources}</p></div>
+        <div class="modal-share">
+            <span>Share:</span>
+            <button class="share-btn share-copy" onclick="copyLink(this,'${s.name}')">🔗 Copy Link</button>
+            <button class="share-btn share-twitter" onclick="window.open('https://twitter.com/intent/tweet?text=${tweetText}','_blank')">𝕏 Share on X</button>
+        </div>`;
+    document.getElementById('modal').classList.add('active');
+    document.body.style.overflow='hidden';
+}
+
+function getCatColor(cat){
+    return{scholar:'#e67e22',scientist:'#27ae60',poet:'#8e44ad',leader:'#2980b9'}[cat]||'#667eea';
+}
+
+function copyLink(btn,name){
+    const url = window.location.href.split('#')[0]+'#'+name.replace(/\s+/g,'-');
+    navigator.clipboard.writeText(url).then(()=>{
+        btn.textContent='✓ Copied!';
+        btn.classList.add('share-copied');
+        setTimeout(()=>{btn.textContent='🔗 Copy Link';btn.classList.remove('share-copied')},2000);
+    }).catch(()=>{
+        /* fallback */
+        const ta=document.createElement('textarea');ta.value=url;document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);
+        btn.textContent='✓ Copied!';setTimeout(()=>btn.textContent='🔗 Copy Link',2000);
     });
-    document.getElementById('scholarName').required     = show;
-    document.getElementById('scholarCategory').required = show;
+}
+
+function closeModal(){
+    document.getElementById('modal').classList.remove('active');
+    document.body.style.overflow='auto';
+    currentModalIdx=null;
+}
+
+document.getElementById('modal').addEventListener('click',e=>{if(e.target===e.currentTarget)closeModal()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
+document.getElementById('scholarsGrid').addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' ')e.target.click()});
+
+/* ── Form type toggle ── */
+document.getElementById('submissionType').addEventListener('change',function(){
+    const show=this.value==='suggest';
+    ['scholarNameGroup','scholarCategoryGroup'].forEach(id=>{
+        document.getElementById(id).style.display=show?'block':'none';
+    });
+    document.getElementById('scholarName').required=show;
+    document.getElementById('scholarCategory').required=show;
 });
 
-/* Form submission via Formspree AJAX */
-document.getElementById('feedbackForm').addEventListener('submit', async function(e) {
+/* ── Form submission via Formspree AJAX ── */
+document.getElementById('feedbackForm').addEventListener('submit',async function(e){
     e.preventDefault();
-    const btn    = document.getElementById('submitBtn');
-    const ok     = document.getElementById('successMessage');
-    const err    = document.getElementById('errorMessage');
-    btn.disabled = true;
-    btn.textContent = 'Sending…';
-    ok.style.display = err.style.display = 'none';
-
-    try {
-        const res = await fetch(this.action, {
-            method: 'POST',
-            body: new FormData(this),
-            headers: { Accept: 'application/json' }
-        });
-        if (res.ok) {
-            ok.style.display = 'block';
-            this.reset();
-            ['scholarNameGroup','scholarCategoryGroup'].forEach(id =>
-                document.getElementById(id).style.display = 'none');
-            setTimeout(() => ok.style.display = 'none', 6000);
-        } else { throw new Error(); }
-    } catch {
-        err.style.display = 'block';
-        setTimeout(() => err.style.display = 'none', 6000);
-    } finally {
-        btn.disabled = false;
-        btn.textContent = 'Submit';
-    }
+    const btn=document.getElementById('submitBtn');
+    const ok=document.getElementById('successMessage');
+    const err=document.getElementById('errorMessage');
+    btn.disabled=true; btn.textContent='Sending…';
+    ok.style.display=err.style.display='none';
+    try{
+        const res=await fetch(this.action,{method:'POST',body:new FormData(this),headers:{Accept:'application/json'}});
+        if(res.ok){
+            ok.style.display='block'; this.reset();
+            ['scholarNameGroup','scholarCategoryGroup'].forEach(id=>document.getElementById(id).style.display='none');
+            setTimeout(()=>ok.style.display='none',6000);
+        } else throw new Error();
+    }catch{
+        err.style.display='block';
+        setTimeout(()=>err.style.display='none',6000);
+    }finally{btn.disabled=false;btn.textContent='Submit'}
 });
 
-/* Back to top */
-const btt = document.getElementById('backToTop');
-window.addEventListener('scroll', () => btt.classList.toggle('visible', window.scrollY > 400));
-btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+/* ── Back to top ── */
+const btt=document.getElementById('backToTop');
+window.addEventListener('scroll',()=>btt.classList.toggle('visible',window.scrollY>400));
+btt.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
 
-/* Initial render */
-renderScholars(scholars);
+/* ── Init ── */
+applyFilters();
 </script>
 </body>
 </html>
